@@ -1,0 +1,21 @@
+[ui]
+username = Ben Bai <u5205339@anu.edu.au>
+
+[paths]
+#default-push = ssh://benyhbai@gduserv.anu.edu.au///home/benyhbai/asc1workspace/asc_repo
+
+[extensions]
+hgext.hbisect=
+hgext.fetch=
+hgext.convert=
+record=
+purge=
+hgext.rebase=
+hgext.graphlog=
+hgext.color=
+hgext.mq=
+crecord=~/Documents/crecord
+
+[mq]
+secret=true
+
