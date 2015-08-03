@@ -1,52 +1,107 @@
-# Introduction
+# R-Vim-runtime
 
-EasyMotion provides a much simpler way to use some motions in vim. It
-takes the `<number>` out of `<number>w` or `<number>f{char}` by
-highlighting all possible choices and allowing you to press one key to
-jump directly to the target.
+This repository contains the development versions of R related runtime files
+distributed with both [Vim] and [Neovim]. The files used to be part of the
+[Vim-R-plugin].
 
-When one of the available motions is triggered, all visible text
-preceding or following the cursor is faded, and motion targets are
-highlighted.
+The runtime files are sent to both Vim and Neovim maintainers when the
+accumulated changes become important. That is, if you have a fairly up to date
+Vim or Neovim, you do not need to install the files from this respository.
 
-EasyMotion is triggered by one of the provided mappings.
+You may copy the files to your personal *~/.vim* or *~/.nvim* directory, but,
+instead of copying the files and checking for updates manually, you may want
+to use a plugin manager like [Vundle], [Pathogen], [Vim-Plug], [Neobundle], or
+other. Note that the R-Vim-runtime files must be sourced before the
+Vim-R-plugin files, that is, if you still receive the warning about outdated
+runtime after installing these files, try changing the order of Vim-R-plugin
+and R-Vim-runtime.
 
-# Important notes about the default bindings
+In some systems, the first files sourced by Vim and Neovim are from the system
+directories. In this case, if you want up to date runtime files, you have to
+copy them to either Vim or Neovim runtime directories. 
 
-**The default leader has been changed to `<Leader><Leader>` to avoid 
-conflicts with other plugins you may have installed.** This can easily be 
-changed back to pre-1.3 behavior by rebinding the leader in your vimrc:
+## Options
 
-	let g:EasyMotion_leader_key = '<Leader>'
+The use of indentation options is explained in the official distribution. To
+see the documentation, please, in Vim or Neovim, do:
 
-All motions are now triggered with `<Leader><Leader>` by default, e.g.
-`<Leader><Leader>t`, `<Leader><Leader>gE`.
+```vim
+:help ft-r-indent
+```
 
-## Usage example
+## Known bugs
 
-Type `<Leader><Leader>w` to trigger the word motion `w`. When the motion is
-triggered, the text is updated (no braces are actually added, the text
-is highlighted in red by default):
+### Syntax highlight bug
 
-	<cursor>Lorem {a}psum {b}olor {c}it {d}met.
+There is a syntax highlight problem in inline blocks when a variable name
+contains underline marks in Rmd files. The highlighting algorithm mistakenly
+interprets the underline as the beginning of an italicized word. Example:
 
-Press `c` to jump to the beginning of the word "sit":
+```
+This value will be wrongly highlighted: **`r a_b`**
+```
 
-	Lorem ipsum dolor <cursor>sit amet.
+### Indentation bugs
 
-Similarly, if you're looking for an "o", you can use the `f` motion.
-Type `<Leader><Leader>fo`, and all "o" characters are highlighted:
+Indentation of R code is slow because the algorithm deals with many specific
+cases. If you are interested in either improving the *indent/r.vim* script or
+rewriting it, please, look at the file [indent_test.R]. The current algorithm
+correctly indents the first 574 lines. A new script should be both faster and
+more accurate.
 
-	<cursor>L{a}rem ipsum d{b}l{c}r sit amet.
+If either Vim or Neovim indents your code wrongly you may get the correct
+indentation by adding braces and line breaks to it. For example, try to indent
+the code below:
 
-Press `b` to jump to the second "o":
+```s
+# This code will be wrongly indented:
+levels(x) <- ## nl == nL or 1
+    if (nl == nL) as.character(labels)
+    else paste(labels, seq_along(levels), sep = "")
+class(x) <- c(if(ordered) "ordered", "factor")
 
-	Lorem ipsum d<cursor>olor sit amet.
 
-Jeffrey Way of Nettuts+ has also [written
-a tutorial](http://net.tutsplus.com/tutorials/other/vim-essential-plugin-easymotion/)
-about EasyMotion.
+# But this one will be correctly indented:
+levels(x) <- ## nl == nL or 1
+    if (nl == nL)
+        as.character(labels)
+    else
+        paste(labels, seq_along(levels), sep = "")
+class(x) <- c(if(ordered) "ordered", "factor")
+```
 
-## Animated demonstration
+The indentation algorithm also fails to correctly indent multiline strings.
+Example:
 
-![Animated demonstration](http://oi54.tinypic.com/2yysefm.jpg)
+```s
+# This is a multiline string:
+paste("A
+      =", 2)
+
+# This is the same string, but written in a single line
+# to avoid indentation issues:
+paste("A\n =     ", 2)
+```
+
+## See also:
+
+Some syntax and indentation bugs that were described above were reported
+when the runtime files were distributed with the [Vim-R-plugin]:
+
+   - Syntax issue: [150].
+
+   - Indentation issues: [37], [77], [133], [158].
+
+[Vim]: http://www.vim.org
+[Neovim]: https://github.com/neovim/neovim
+[Vundle]: https://github.com/gmarik/Vundle.vim
+[Pathogen]: https://github.com/tpope/vim-pathogen
+[Vim-Plug]: https://github.com/junegunn/vim-plug
+[Neobundle]: https://github.com/Shougo/neobundle.vim
+[indent_test.R]: https://github.com/jalvesaq/R-Vim-runtime/blob/master/tests/indent_test.R
+[Vim-R-plugin]: https://github.com/jcfaria/Vim-R-plugin
+[37]: https://github.com/jcfaria/Vim-R-plugin/issues/37
+[77]: https://github.com/jcfaria/Vim-R-plugin/issues/77
+[133]: https://github.com/jcfaria/Vim-R-plugin/issues/133
+[150]: https://github.com/jcfaria/Vim-R-plugin/issues/150
+[158]: https://github.com/jcfaria/Vim-R-plugin/issues/158

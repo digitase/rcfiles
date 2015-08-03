@@ -1,0 +1,52 @@
+as.data.framefunctionfunctionXVectorx	...
+as.vectorfunctionfunctionXVectorx	mode"any"
+coercefunctionfunctionXVectorfrom	to	strictTRUE
+compactfunctionfunctionXVectorx	checkTRUE	...
+comparefunctionfunctionXVectorx	y
+duplicatedfunctionfunctionXVectorx	incomparablesFALSE	fromLastFALSE	nmaxNA	...
+duplicated.XRawListfunctionfunctionXVectorx	incomparablesFALSE	...
+elementLengthsfunctionfunctionXVectorx
+endoapplyfunctionfunctionXVectorX	FUN	...
+extractListfunctionfunctionXVectorx	i
+is.unsortedfunctionfunctionXVectorx	na.rmFALSE	strictlyFALSE
+matchfunctionfunctionXVectorx	table	incomparablesNULL	...
+orderfunctionfunctionXVector...	na.lastTRUE	decreasingFALSE
+rankfunctionfunctionXVectorx	na.lastTRUE	ties.methodc("average", "first", "random", "max", "min")
+RdaCollectionfunctionfunctionXVectordirpath	objnames
+rdaPathfunctionfunctionXVectorx	objname
+relistfunctionfunctionXVectorflesh	skeletonattr(flesh, "skeleton")
+relistToClassfunctionfunctionXVectorx
+revfunctionfunctionXVectorx
+reversefunctionfunctionXVectorx	...
+SharedRawfunctionfunctionXVectorvalNULL
+SharedRaw.readfunctionfunctionXVectorx	i	imaxinteger(0)	dec_lkupNULL
+SharedRaw.readComplexesfunctionfunctionXVectorx	i	imaxinteger(0)	lkup
+SharedRaw.readIntsfunctionfunctionXVectorx	i	imaxinteger(0)
+SharedRaw.writefunctionfunctionXVectorx	i	imaxinteger(0)	value	enc_lkupNULL
+SharedRaw.writeIntsfunctionfunctionXVectorx	i	imaxinteger(0)	value
+SharedVector.comparefunctionfunctionXVectorx1	start1	x2	start2	width
+SharedVector.copyfunctionfunctionXVectordest	i	imaxinteger(0)	src	lkupNULL
+showfunctionfunctionXVectorobject
+showAsCellfunctionfunctionXVectorobject
+slicefunctionfunctionXVectorx	lower-Inf	upperInf	...
+splitAsListReturnedClassfunctionfunctionXVectorx
+subseqfunctionfunctionXVectorx	startNA	endNA	widthNA
+subseq<-functionfunctionXVectorx	startNA	endNA	widthNA	value
+toStringfunctionfunctionXVectorx	widthNULL	...
+unlist_list_of_XVectorListfunctionfunctionXVectorClass	x	use.namesTRUE	ignore.mcolsFALSE
+unsplit_list_of_XVectorListfunctionfunctionXVectorclassname	x	f
+updateObjectfunctionfunctionXVectorobject	...	verboseFALSE
+viewMaxsfunctionfunctionXVectorx	na.rmFALSE
+viewMeansfunctionfunctionXVectorx	na.rmFALSE
+viewMinsfunctionfunctionXVectorx	na.rmFALSE
+ViewsfunctionfunctionXVectorsubject	startNULL	endNULL	widthNULL	namesNULL
+viewSumsfunctionfunctionXVectorx	na.rmFALSE
+viewWhichMaxsfunctionfunctionXVectorx	na.rmFALSE
+viewWhichMinsfunctionfunctionXVectorx	na.rmFALSE
+widthfunctionfunctionXVectorx
+XDoublefunctionfunctionXVectorlengthbase::length(val)	valNULL
+XIntegerfunctionfunctionXVectorlengthbase::length(val)	valNULL
+XNumericfunctionfunctionXVector...
+XRawfunctionfunctionXVectorvalNULL
+xvcopyfunctionfunctionXVectorx	startNA	endNA	widthNA	lkupNULL	reverseFALSE
+XVectorListfunctionfunctionXVectorclassname

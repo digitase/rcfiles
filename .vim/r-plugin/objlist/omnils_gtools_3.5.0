@@ -1,0 +1,42 @@
+addLastfunctionfunctiongtoolsfun
+ascfunctionfunctiongtoolschar	simplifyTRUE
+ASCIIfyfunctionfunctiongtoolsx	bytes2	fallback"?"
+askfunctionfunctiongtoolsmsg"Press <RETURN> to continue: "
+assertfunctionfunctiongtoolsFLAG
+assignEdgewisefunctionfunctiongtoolsname	env	value
+binsearchfunctionfunctiongtoolsfun	range	...	target0	lowerceiling(min(range))	upperfloor(max(range))	maxiter100	showiterFALSE
+capturefunctionfunctiongtoolsexpression	collapse"\n"
+checkRVersionfunctionfunctiongtoolsquietFALSE
+chrfunctionfunctiongtoolsascii
+combinationsfunctionfunctiongtoolsn	r	v1:n	setTRUE	repeats.allowedFALSE
+ddirichletfunctionfunctiongtoolsx	alpha
+defmacrofunctionfunctiongtools...	expr
+evenfunctionfunctiongtoolsx
+foldchangefunctionfunctiongtoolsnum	denom
+foldchange2logratiofunctionfunctiongtoolsfoldchange	base2
+getDependenciesfunctionfunctiongtoolspkgs	dependenciesc("Depends", "Imports", "LinkingTo")	installedTRUE	availableTRUE	baseFALSE	recommendedFALSE
+inv.logitfunctionfunctiongtoolsx	min0	max1
+invalidfunctionfunctiongtoolsx
+keywordsfunctionfunctiongtoolstopic
+lastAddfunctionfunctiongtoolsfun
+loadedPackagesfunctionfunctiongtoolssilentFALSE
+logitfunctionfunctiongtoolsx	min0	max1
+logratio2foldchangefunctionfunctiongtoolslogratio	base2
+mixedorderfunctionfunctiongtoolsx	decreasingFALSE	na.lastTRUE	blank.lastFALSE	numeric.typec("decimal", "roman")	roman.casec("upper", "lower", "both")
+mixedsortfunctionfunctiongtoolsx	decreasingFALSE	na.lastTRUE	blank.lastFALSE	numeric.typec("decimal", "roman")	roman.casec("upper", "lower", "both")
+na.replacefunctionfunctiongtoolsx	replace
+oddfunctionfunctiongtoolsx
+permutationsfunctionfunctiongtoolsn	r	v1:n	setTRUE	repeats.allowedFALSE
+permutefunctionfunctiongtoolsx
+quantcutfunctionfunctiongtoolsx	q4	na.rmTRUE	...
+rdirichletfunctionfunctiongtoolsn	alpha
+roman2intfunctionfunctiongtoolsroman
+runningfunctionfunctiongtoolsX	YNULL	fun	widthmin(length(X), 20)	allow.fewerFALSE	padFALSE	alignc("right", "center", "left")	simplifyTRUE	by	...
+scatfunctionfunctiongtools...
+setTCPNoDelayfunctionfunctiongtoolssocket	valueTRUE
+smartbindfunctionfunctiongtools...	fillNA	sep":"	verboseFALSE
+sprintfunctionfunctiongtoolsx	...
+stars.pvalfunctionfunctiongtoolsp.value
+strmacrofunctionfunctiongtools...	expr	strexpr
+unByteCodefunctionfunctiongtoolsfun
+unByteCodeAssignfunctionfunctiongtoolsfun

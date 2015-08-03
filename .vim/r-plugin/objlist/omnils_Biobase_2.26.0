@@ -1,0 +1,127 @@
+abstractfunctionfunctionBiobaseobject
+addVigs2WinMenufunctionfunctionBiobasepkgName
+aggenvfunctionfunctionBiobaseobject
+aggfunfunctionfunctionBiobaseobject
+AggregatefunctionfunctionBiobasex	agg
+AnnotatedDataFramefunctionfunctionBiobasedata	varMetadata	...
+annotatedDataFrameFromfunctionfunctionBiobaseobject	byrow	...
+annotationfunctionfunctionBiobaseobject	...
+annotation<-functionfunctionBiobaseobject	...	value
+anyMissingfunctionfunctionBiobasexNULL
+as.data.frame.ExpressionSetfunctionfunctionBiobasex	row.namesNULL	optionalFALSE	...
+assayDatafunctionfunctionBiobaseobject
+assayData<-functionfunctionBiobaseobject	value
+assayDataElementfunctionfunctionBiobaseobject	elt
+assayDataElement<-functionfunctionBiobaseobj	elt	value
+assayDataElementNamesfunctionfunctionBiobaseobject
+assayDataElementReplacefunctionfunctionBiobaseobj	elt	value
+assayDataNewfunctionfunctionBiobasestorage.modec("lockedEnvironment", "environment", "list")	...
+assayDataValidMembersfunctionfunctionBiobaseassayData	required
+cachefunctionfunctionBiobaseexpr	dir"."	prefix"tmp_R_cache_"	name
+channelfunctionfunctionBiobaseobject	name	...
+channelNamesfunctionfunctionBiobaseobject	...
+channelNames<-functionfunctionBiobaseobject	...	value
+classVersionfunctionfunctionBiobaseobject
+classVersion<-functionfunctionBiobaseobject	value
+coercefunctionfunctionBiobasefrom	to	strictTRUE
+combinefunctionfunctionBiobasex	y	...
+ComparefunctionfunctionBiobasee1	e2
+contentfunctionfunctionBiobaseobject
+contentsfunctionfunctionBiobaseobject	all.names
+copyEnvfunctionfunctionBiobaseoldEnv	newEnv	all.namesFALSE
+copySubstitutefunctionfunctionBiobasesrc	dest	symbolValues	symbolDelimiter"@"	allowUnresolvedSymbolsFALSE	recursiveFALSE	removeExtension"\.in$"
+createPackagefunctionfunctionBiobasepkgname	destinationDir	originDir	symbolValues	unlinkFALSE	quietFALSE
+descriptionfunctionfunctionBiobaseobject	...
+description<-functionfunctionBiobaseobject	value
+dimLabelsfunctionfunctionBiobaseobject
+dimLabels<-functionfunctionBiobaseobject	value
+dimsfunctionfunctionBiobaseobject
+dumpPackTxtfunctionfunctionBiobasepackage
+esApplyfunctionfunctionBiobaseX	MARGIN	FUN	...
+experimentDatafunctionfunctionBiobaseobject
+experimentData<-functionfunctionBiobaseobject	value
+expinfofunctionfunctionBiobaseobject
+ExpressionSetfunctionfunctionBiobaseassayData	phenoDataannotatedDataFrameFrom(assayData, byrow = FALSE)	featureDataannotatedDataFrameFrom(assayData, byrow = TRUE)	experimentDataMIAME()	annotationcharacter()	protocolDataannotatedDataFrameFrom(assayData, byrow = FALSE)	...
+exprsfunctionfunctionBiobaseobject
+exprs<-functionfunctionBiobaseobject	value
+fDatafunctionfunctionBiobaseobject
+fData<-functionfunctionBiobaseobject	value
+featureDatafunctionfunctionBiobaseobject
+featureData<-functionfunctionBiobaseobject	value
+featureNamesfunctionfunctionBiobaseobject
+featureNames<-functionfunctionBiobaseobject	value
+fvarLabelsfunctionfunctionBiobaseobject
+fvarLabels<-functionfunctionBiobaseobject	value
+fvarMetadatafunctionfunctionBiobaseobject
+fvarMetadata<-functionfunctionBiobaseobject	value
+getPkgVigsfunctionfunctionBiobasepackageNULL
+hybridizationsfunctionfunctionBiobaseobject
+initfunfunctionfunctionBiobaseobject
+initializefunctionfunctionBiobase.Object	...
+isCurrentfunctionfunctionBiobaseobject	value
+isUniquefunctionfunctionBiobasex
+isVersionedfunctionfunctionBiobaseobject
+lcPrefixfunctionfunctionBiobasex	ignore.caseFALSE
+lcPrefixCfunctionfunctionBiobasex	ignore.caseFALSE
+lcSuffixfunctionfunctionBiobasex	ignore.caseFALSE
+listLenfunctionfunctionBiobasex
+lockedfunctionfunctionBiobaseobject
+makeDataPackagefunctionfunctionBiobaseobject	author	email	packageNamedeparse(substitute(object))	packageVersionpackage_version("1.0.0")	license"Artistic-2.0"	biocViews"ExperimentData"	filePathtempdir()	...
+matchptfunctionfunctionBiobasex	y
+MIAMEfunctionfunctionBiobasename""	lab""	contact""	title""	abstract""	url""	pubMedIds""	sampleslist()	hybridizationslist()	normControlslist()	preprocessinglist()	otherlist()
+mkScalarfunctionfunctionBiobaseobj
+multiassignfunctionfunctionBiobasex	value	envirparent.frame()	inheritsFALSE
+NChannelSetfunctionfunctionBiobase...
+normControlsfunctionfunctionBiobaseobject
+notefunctionfunctionBiobase...
+notesfunctionfunctionBiobaseobject
+notes<-functionfunctionBiobaseobject	value
+openPDFfunctionfunctionBiobasefile	bgTRUE
+openVignettefunctionfunctionBiobasepackageNULL
+otherInfofunctionfunctionBiobaseobject
+package.versionfunctionfunctionBiobasepkg	lib.locNULL
+pDatafunctionfunctionBiobaseobject
+pData<-functionfunctionBiobaseobject	value
+phenoDatafunctionfunctionBiobaseobject
+phenoData<-functionfunctionBiobaseobject	value
+preprocfunctionfunctionBiobaseobject
+preproc<-functionfunctionBiobaseobject	value
+protocolDatafunctionfunctionBiobaseobject
+protocolData<-functionfunctionBiobaseobject	value
+pubMedIdsfunctionfunctionBiobaseobject
+pubMedIds<-functionfunctionBiobaseobject	value
+read.AnnotatedDataFramefunctionfunctionBiobasefilename	path	sep"	"	headerTRUE	quote""	stringsAsFactorsFALSE	varMetadata.char"#"	widgetgetOption("BioC")$Base$use.widgets	sampleNamescharacter(0)	...
+read.MIAMEfunctionfunctionBiobasefilenameNULL	widgetgetOption("BioC")$Base$use.widgets	...
+readExpressionSetfunctionfunctionBiobaseexprsFile	phenoDataFile	experimentDataFile	notesFile	path	annotation	exprsArgslist(sep = sep, header = header, row.names = row.names, quote = quote, 	exprsArgs    ...)	phenoDataArgslist(sep = sep, header = header, row.names = row.names, quote = quote, 	phenoDataArgs    stringsAsFactors = stringsAsFactors, ...)	experimentDataArgslist(sep = sep, header = header, row.names = row.names, quote = quote, 	experimentDataArgs    stringsAsFactors = stringsAsFactors, ...)	sep"	"	headerTRUE	quote""	stringsAsFactorsFALSE	widgetgetOption("BioC")$Base$use.widgets	...
+reverseSplitfunctionfunctionBiobaseinList
+rowMaxfunctionfunctionBiobaseimat
+rowMediansfunctionfunctionBiobasex	na.rmFALSE	...
+rowMinfunctionfunctionBiobaseimat
+rowQfunctionfunctionBiobaseimat	which
+sampleNamesfunctionfunctionBiobaseobject
+sampleNames<-functionfunctionBiobaseobject	value
+samplesfunctionfunctionBiobaseobject
+se.exprsfunctionfunctionBiobaseobject
+se.exprs<-functionfunctionBiobaseobject	value
+selectChannelsfunctionfunctionBiobaseobject	names	...
+selectSomefunctionfunctionBiobaseobj	maxToShow5
+showfunctionfunctionBiobaseobject
+snpCallfunctionfunctionBiobaseobject	...
+snpCall<-functionfunctionBiobaseobject	...	value
+snpCallProbabilityfunctionfunctionBiobaseobject	...
+snpCallProbability<-functionfunctionBiobaseobject	...	value
+storageModefunctionfunctionBiobaseobject
+storageMode<-functionfunctionBiobaseobject	value
+strbreakfunctionfunctionBiobasex	widthgetOption("width")	exdent2	collapse"\n"
+subListExtractfunctionfunctionBiobaseL	name	simplifyFALSE	keep.namesTRUE
+testBioCConnectionfunctionfunctionBiobaseNO_ARGS
+updateObjectfunctionfunctionBiobaseobject	...	verboseFALSE
+updateObjectTofunctionfunctionBiobaseobject	template	...	verboseFALSE
+updateOldESetfunctionfunctionBiobasefrom	toClass	...
+userQueryfunctionfunctionBiobasemsg	allowedc("y", "n")	default"n"	case.sensitiveFALSE
+validMsgfunctionfunctionBiobasemsg	result
+varLabelsfunctionfunctionBiobaseobject
+varLabels<-functionfunctionBiobaseobject	value
+varMetadatafunctionfunctionBiobaseobject
+varMetadata<-functionfunctionBiobaseobject	value
+write.exprsfunctionfunctionBiobasex	...
