@@ -1,0 +1,7 @@
+
+# Cycle completions
+# cycle forward
+Control-n: menu-complete
+# # cycle backward
+Control-p: menu-complete-backward
+
