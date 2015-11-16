@@ -1,7 +1,20 @@
 
+# Use Vi, not Emacs, style editing
+set editing-mode vi
+
+# Allow hotkeys for reloading inputrc file
+"\C-x\C-r": re-read-init-file
+
+# Define key bindings for vi command mode
+set keymap vi-command
+
 # Cycle completions
 # cycle forward
 Control-n: menu-complete
-# # cycle backward
+# cycle backward
 Control-p: menu-complete-backward
+
+# Remap up/down history
+"\ep": previous-history
+"\en": next-history
 
