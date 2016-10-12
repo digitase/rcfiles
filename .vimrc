@@ -16,16 +16,15 @@ filetype plugin on
 filetype indent on
 
 "
-" Colors
+" Colors and fonts
 "
 
 " Turn on syntax highlighting
 syntax enable
 
-" color scheme for Gui options
+" Gui specific options
 if has('gui_running')
     set guifont=Monospace
-    colorscheme wombat
 endif
 
 "
@@ -176,14 +175,23 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 
 " vim motions on speed
-Plug 'scrooloose/nerdtree'
+Plug 'easymotion/vim-easymotion'
 
 " perform insert mode completions with tab
 Plug 'ervandew/supertab'
 
+" manip brackets/parens/quotes in pairs
+Plug 'jiangmiao/auto-pairs'
+
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
 call plug#end()
+
+"
+" Solarized config
+"
+
+colorscheme solarized
 
 "
 " SuperTab config
