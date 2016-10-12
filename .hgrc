@@ -2,7 +2,7 @@
 username = Ben Bai <bb9@sanger.ac.uk>
 
 [paths]
-#default-push = ssh://benyhbai@gduserv.anu.edu.au///home/benyhbai/asc1workspace/asc_repo
+#default-push = ssh://
 
 [extensions]
 hgext.hbisect=

@@ -1,30 +1,113 @@
-" Turn on syntax highlighting
-syntax on
+
+"
+" Init
+"
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
 
+" Change current dir on open
+set autochdir
+
+" enable loading the plugin files for specific file types
+filetype plugin on
+
+" Load the language specific indent files
+filetype indent on
+
+"
+" Colors
+"
+
+" Turn on syntax highlighting
+syntax enable
+
+" color scheme for Gui options
+if has('gui_running')
+    set guifont=Monospace
+    colorscheme wombat
+endif
+
+"
+" UI
+"
+
+" Stop annoying people
+set visualbell
+
+" Display the cursor position on the last line of the screen or in the status line of a window
+set ruler
+
+" Display line numbers on the left
+set number
+
+" highlight current line
+set cursorline
+
+" show the last (partial) command entered
+set showcmd     
+" Set the command window height to 2 lines"
+set cmdheight=2
+
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" Maintain 3 lines of space between cursor and edge
+set scrolloff=3
+
+" Do not wrap lines
+set nowrap
+
+" showmatch: Show the matching bracket for the last ')'?
+set showmatch
+
+"
+" Editing
+"
+
 " 1 tab == 4 spaces
 set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set tabstop=4 " width of a TAB when displayed
 
-" Spaces instead of tabs
-set expandtab
+set expandtab " insert spaces instead of tabs
+set softtabstop=4 " number of spaces inserted in place of a TAB
 
 " Be smart when using tabs
 set smarttab
 
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
 
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-set autoindent
+"
+" Search
+"
+
+" do incremental searches, highlight matches
+set incsearch 
+set hlsearch
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+"
+" Autocompletion
+"
+
+" Omnicompletion
+set omnifunc=syntaxcomplete#Complete
+
+" Add a completion menu to command completion
+set wildmenu
+set wildmode=list:longest
+
+"
+" History
+"
 
 " do not keep a backup files 
 set nobackup
@@ -33,61 +116,85 @@ set nowritebackup
 " keep 50 lines of command line history
 set history=50  
 
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
+"
+" Key mappings
+"
 
-" show (partial) commands
-set showcmd     
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
 
-" do incremental searches (annoying but handy);
-set incsearch 
-set hlsearch
-
-" showmatch: Show the matching bracket for the last ')'?
-set showmatch
-
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
-
-" Set the command window height to 2 lines"
-set cmdheight=2
-
-" Display line numbers on the left
-set number
-
-" Always display the status line, even if only one window is displayed
-set laststatus=2
+" Remap semicolon to colon
+nmap ; :
 
 " make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
 
-" Remap semicolon to colon
-nmap ; :
+" Allow arrow keys to work on a remote shell
+imap <ESC>oA <ESC>ki
+imap <ESC>oB <ESC>ji
+imap <ESC>oC <ESC>li
+imap <ESC>oD <ESC>hi
 
-" Gui options
-if has('gui_running')
-    set guifont=Monospace
-    colorscheme wombat
+"
+" vim-plug section
+" A minimalist vim plugin manager
+"
+
+" auto-install plugin manager
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-" Change current dir on open
-set autochdir
+" begin the section
+call plug#begin('~/.vim/plugged')
 
-" Stop annoying people
-set visualbell
+" list plugins with Plug commands
 
-" Maintain 3 lines of space between cursor and edge"
-set scrolloff=3
+" fuzzy filesystem finder
+Plug 'ctrlpvim/ctrlp.vim'
 
-" Add completion menu to command completion
-set wildmenu
-set wildmode=list:longest
+" as you type code completion engine
+" Plug 'valloric/youcompleteme'
 
-" Do not wrap lines
-set nowrap
+" syntax checking hacks
+Plug 'scrooloose/syntastic'
+
+" precision colorscheme for vim
+Plug 'altercation/vim-colors-solarized'
+
+" commenting plugin
+Plug 'scrooloose/nerdcommenter'
+
+" tree explorer plugin
+Plug 'scrooloose/nerdtree'
+
+" quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+" vim motions on speed
+Plug 'scrooloose/nerdtree'
+
+" perform insert mode completions with tab
+Plug 'ervandew/supertab'
+
+" end the section to add plugins to &runtimepath
+" Reload .vimrc and :PlugInstall to install plugins.
+call plug#end()
+
+"
+" SuperTab config
+"
+
+" Lets SuperTab decide which completion mode to use and should play well with OmniCompletion
+let g:SuperTabDefaultCompletionType = "context"
+
+"
+" NERDCommenter config
+"
 
 " place spaces after comment chars
 let NERDSpaceDelims=1
@@ -95,15 +202,9 @@ let NERDSpaceDelims=1
 " don't recomment commented lines
 let NERDDefaultNesting=0
 
-" Omnicompletion
-set omnifunc=syntaxcomplete#Complete
-
-" Lets SuperTab decide which completion mode to use and should play well with OmniCompletion
-let g:SuperTabDefaultCompletionType = "context"
-
-" You can enable loading the plugin files for specific file types
-filetype plugin on
-
+"
+" vimR config
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " From http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/vim-r-plugin/.vimrc
 " Vim-R-Tmux installation info at:
@@ -159,9 +260,6 @@ let vimrplugin_conqueplugin = 0
 let g:vimrplugin_map_r = 1
 " see R documentation in a Vim buffer
 let vimrplugin_vimpager = "no"
-"set expandtab
-set shiftwidth=4
-set tabstop=8
 " start R with F2 key
 map <F2> <Plug>RStart 
 imap <F2> <Plug>RStart
@@ -171,14 +269,11 @@ vmap <Space> <Plug>RDSendSelection
 " send line to R with space bar
 nmap <Space> <Plug>RDSendLine
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let vimrplugin_show_args = 1
-
-" Allow arrow keys to work on a remote shell
-imap <ESC>oA <ESC>ki
-imap <ESC>oB <ESC>ji
-imap <ESC>oC <ESC>li
-imap <ESC>oD <ESC>hi
-
 " Disable underscore(_) automatically converted to (<-) for vimR
 let vimrplugin_assign = 0
+
+" Show extra info during omnicompletion
+let vimrplugin_show_args = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
