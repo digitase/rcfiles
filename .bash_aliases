@@ -13,7 +13,6 @@
 #fi
 
 # some more ls aliases
-#alias l='ls -CF'
 alias l='ls -Fa'
 alias ll='ls -Fla'
 
@@ -22,3 +21,7 @@ alias ll='ls -Fla'
 
 # Set pager to less
 export PAGER="less"
+
+# default editor settings
+export VISUAL=vim
+export EDITOR="$VISUAL"

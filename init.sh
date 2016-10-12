@@ -1,11 +1,20 @@
 
 # Symlink config files to the correct place on a new install
 
-if [ ! -f "~/.vimrc" ]; then
-    ln -s ".vimrc" "~/.vimrc"
-fi
+function create_link {
 
-if [ ! -f "~/.bash_aliases" ]; then
-    ln -s ".bash_aliases" "~/.bash_aliases"
-fi
+    RCFILE="$1"
+    LINKPATH="$2"
+    
+    if [ ! -e "$LINKPATH" ]; then
+        echo Linking "$LINKPATH" to "$RCFILE"
+        ln -s "$(readlink -f "$RCFILE")" "$LINKPATH"
+    fi
+
+}
+
+create_link .vimrc ~/.vimrc
+create_link .bash_aliases ~/.bash_aliases
+create_link .tmux.conf ~/.tmux.conf
+create_link .inputrc ~/.inputrc
 

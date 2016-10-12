@@ -81,6 +81,9 @@ set autoindent
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
+" Prevent auto wrapping of text and continuation of comments
+set formatoptions=q
+
 "
 " Search
 "
@@ -119,6 +122,9 @@ set history=50
 " Key mappings
 "
 
+" remap esc
+inoremap jj <Esc>
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -135,6 +141,26 @@ imap <ESC>oA <ESC>ki
 imap <ESC>oB <ESC>ji
 imap <ESC>oC <ESC>li
 imap <ESC>oD <ESC>hi
+
+" Split navigation without C-w
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
+
+" Advanced split navigation integration with tmux
+" function! s:NavigateTermSplits(direction)
+  " let windowNumber = winnr()
+  " execute 'wincmd ' . a:direction
+  " if windowNumber == winnr()
+    " silent call system('tmux select-pane -' . tr(a:direction, 'hjkl', 'LDUR'))
+  " endif
+" endfunction
+
+" nnoremap <silent> <C-h> :call <SID>NavigateTermSplits('h')<CR>
+" nnoremap <silent> <C-j> :call <SID>NavigateTermSplits('j')<CR>
+" nnoremap <silent> <C-k> :call <SID>NavigateTermSplits('k')<CR>
+" nnoremap <silent> <C-l> :call <SID>NavigateTermSplits('l')<CR>
 
 "
 " vim-plug section
@@ -155,6 +181,10 @@ call plug#begin('~/.vim/plugged')
 
 " fuzzy filesystem finder
 Plug 'ctrlpvim/ctrlp.vim'
+
+"  Seamless navigation between tmux panes and vim splits
+"  NOTE: This requires tmux v1.8 or higher.
+" Plug 'christoomey/vim-tmux-navigator'
 
 " as you type code completion engine
 " Plug 'valloric/youcompleteme'
@@ -191,6 +221,7 @@ call plug#end()
 " Solarized config
 "
 
+set background=dark
 colorscheme solarized
 
 "
