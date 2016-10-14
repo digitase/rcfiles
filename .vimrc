@@ -179,6 +179,13 @@ call plug#begin('~/.vim/plugged')
 
 " list plugins with Plug commands
 
+" vim REPL 
+Plug 'jpalardy/vim-slime'
+
+" vim plugin to work with R
+" Vim >= 8.0.0, R >= 3.0.0
+" Plug 'jalvesaq/Nvim-R'
+
 " fuzzy filesystem finder
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -240,6 +247,16 @@ let NERDSpaceDelims=1
 
 " don't recomment commented lines
 let NERDDefaultNesting=0
+
+"
+" vim-slime config
+"
+
+" Use tmux instead of screen (default)
+let g:slime_target = "tmux"
+
+" IPython has a %cpaste magic function that allows for error-free pasting.
+let g:slime_python_ipython = 1
 
 "
 " vimR config
