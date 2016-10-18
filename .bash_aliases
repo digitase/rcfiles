@@ -1,5 +1,8 @@
 # Bash aliases
 
+# Append to PATH
+PATH="$HOME/bin:$PATH"
+
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
 #    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -14,7 +17,8 @@
 
 # some more ls aliases
 alias l='ls -Fa'
-alias ll='ls -Fla'
+alias ll='ls -Fal'
+alias lll='ls -Falt | tac'
 
 # For vimcom/vim-r-plugin
 #alias vim="vim --servername VIM"
@@ -25,3 +29,4 @@ export PAGER="less"
 # default editor settings
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
