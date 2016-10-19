@@ -17,4 +17,5 @@ create_link .vimrc ~/.vimrc
 create_link .bash_aliases ~/.bash_aliases
 create_link .tmux.conf ~/.tmux.conf
 create_link .inputrc ~/.inputrc
+create_link .gitconfig ~/.gitconfig
 
