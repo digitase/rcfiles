@@ -1,16 +1,18 @@
 
 # Symlink config files to the correct place on a new install
 
-function create_link {
+function readlinkf {
+    perl -MCwd -e 'print Cwd::abs_path shift' "$1"
+}
 
+function create_link {
     RCFILE="$1"
     LINKPATH="$2"
     
     if [ ! -e "$LINKPATH" ]; then
         echo Linking "$LINKPATH" to "$RCFILE"
-        ln -s "$(readlink -f "$RCFILE")" "$LINKPATH"
+        ln -s "$(readlinkf "$RCFILE")" "$LINKPATH"
     fi
-
 }
 
 create_link .vimrc ~/.vimrc
