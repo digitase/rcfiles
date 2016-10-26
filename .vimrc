@@ -103,9 +103,22 @@ set smartcase
 " Omnicompletion
 set omnifunc=syntaxcomplete#Complete
 
+" Press Enter to accept the selected word. Hit Esc to cancel completion and go back to the original word. 
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+
 " Add a completion menu to command completion
+" That means that on first <Tab> it will complete to the longest common string
+" and will invoke wildmenu (an horizontal and unobstructive little menu). On
+" next <Tab> it will complete the first altenative and the will start to cycle
+" through the rest. You can go back and forth with <Tab> and <S-Tab>
+" respectively.
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest:full,full
+
+" but rather just inserts the longest common text of all
+" matches; and the menu will come up even if there's only one match
+set completeopt=longest,menuone
 
 "
 " History

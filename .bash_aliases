@@ -18,7 +18,7 @@ PATH="$HOME/bin:$PATH"
 # some more ls aliases
 alias l='ls -Fa'
 alias ll='ls -Fal'
-alias lll='ls -Falt | tac'
+alias lll='ls -Faltr'
 
 # For vimcom/vim-r-plugin
 #alias vim="vim --servername VIM"
