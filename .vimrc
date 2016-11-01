@@ -120,6 +120,10 @@ set wildmode=longest:full,full
 " matches; and the menu will come up even if there's only one match
 set completeopt=longest,menuone
 
+" Turn off completion from unloaded buffers
+" Stops vim searching closed large files.
+set complete=.,w,b,t,i
+
 "
 " History
 "
