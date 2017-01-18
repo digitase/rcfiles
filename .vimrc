@@ -114,7 +114,7 @@ inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 " through the rest. You can go back and forth with <Tab> and <S-Tab>
 " respectively.
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest,list
 
 " but rather just inserts the longest common text of all
 " matches; and the menu will come up even if there's only one match
