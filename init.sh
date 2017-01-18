@@ -9,10 +9,12 @@ function create_link {
     RCFILE="$1"
     LINKPATH="$2"
     
-    if [ ! -e "$LINKPATH" ]; then
+    # if [ ! -e "$LINKPATH" ]; then
+        echo Renaming existing file "$LINKPATH" if necessary...
+        mv -v "$LINKPATH" "$LINKPATH.old"
         echo Linking "$LINKPATH" to "$RCFILE"
-        ln -s "$(readlinkf "$RCFILE")" "$LINKPATH"
-    fi
+        ln -v -s "$(readlinkf "$RCFILE")" "$LINKPATH"
+    # fi
 }
 
 create_link .vimrc ~/.vimrc
