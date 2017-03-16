@@ -214,7 +214,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'valloric/youcompleteme'
 
 " syntax checking hacks
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 
 " precision colorscheme for vim
 Plug 'altercation/vim-colors-solarized'
@@ -260,7 +260,7 @@ let g:SuperTabDefaultCompletionType = "context"
 "
 
 " place spaces after comment chars
-let NERDSpaceDelims=1
+let NERDSpaceDelims=0
 
 " don't recomment commented lines
 let NERDDefaultNesting=0
