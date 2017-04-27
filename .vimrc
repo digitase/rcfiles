@@ -20,7 +20,7 @@ filetype indent on
 "
 
 " Turn on syntax highlighting
-syntax enable
+syntax on
 
 " Gui specific options
 if has('gui_running')
@@ -244,7 +244,8 @@ call plug#end()
 "
 " Solarized config
 "
-
+let g:solarized_termcolors=256
+set t_Co=256 
 set background=dark
 colorscheme solarized
 
