@@ -30,3 +30,6 @@ export PAGER="less"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# Force tmux to assume the terminal supports 256 colours.
+alias tmux="tmux -2"
+
