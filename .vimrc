@@ -96,6 +96,9 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" Search for visually selected text
+vnoremap // y/<C-R>"<CR>"
+
 "
 " Autocompletion
 "
@@ -260,7 +263,7 @@ let g:SuperTabDefaultCompletionType = "context"
 "
 
 " place spaces after comment chars
-let NERDSpaceDelims=0
+let NERDSpaceDelims=1
 
 " don't recomment commented lines
 let NERDDefaultNesting=0
