@@ -33,3 +33,9 @@ export EDITOR="$VISUAL"
 # Force tmux to assume the terminal supports 256 colours.
 alias tmux="tmux -2"
 
+# Gets fresh environment variables for tmux
+function tmux_refresh_env_vars {
+    if [ -n "$TMUX"  ]; then
+        export $(tmux show-environment | grep "^DISPLAY")
+    fi
+}
