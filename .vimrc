@@ -238,7 +238,15 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 
 " manip brackets/parens/quotes in pairs
-Plug 'jiangmiao/auto-pairs'
+" Too aggressive
+" Plug 'jiangmiao/auto-pairs'
+
+" A modern vim plugin for editing LaTeX files.
+Plug 'lervag/vimtex'
+
+" Inserts matching bracket, paren, brace or quote
+" http://vimawesome.com/plugin/autoclose-with-ourselves
+Plug 'vim-scripts/AutoClose'
 
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
@@ -268,6 +276,17 @@ let NERDSpaceDelims=1
 
 " don't recomment commented lines
 let NERDDefaultNesting=0
+
+" Add your own custom formats or override the defaults
+" Get rid of extra space, presumably the default left is '# '
+let g:NERDCustomDelimiters = {'python': {'left': '#'}}
+
+" Allow commenting and inverting empty lines (useful when commenting a
+" region)
+let NERDCommentEmptyLines=1
+
+" Enable trimming of trailing whitespace when uncommenting
+let NERDTrimTrailingWhitespace=1
 
 "
 " vim-slime config
