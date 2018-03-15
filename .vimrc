@@ -240,26 +240,22 @@ Plug 'tpope/vim-surround'
 " vim motions on speed
 Plug 'easymotion/vim-easymotion'
 
+" Better Rainbow Parentheses
+Plug 'kien/rainbow_parentheses.vim'
+
 " manip brackets/parens/quotes in pairs
-<<<<<<< HEAD
+" Too aggressive
 " Plug 'jiangmiao/auto-pairs'
 
 " AutoPairs is surely great plugin, but, to me, it behaves too aggressively
 Plug 'vim-scripts/auto-pairs-gentle'
-
-" Better Rainbow Parentheses
-Plug 'kien/rainbow_parentheses.vim'
-=======
-" Too aggressive
-" Plug 'jiangmiao/auto-pairs'
 
 " A modern vim plugin for editing LaTeX files.
 Plug 'lervag/vimtex'
 
 " Inserts matching bracket, paren, brace or quote
 " http://vimawesome.com/plugin/autoclose-with-ourselves
-Plug 'vim-scripts/AutoClose'
->>>>>>> 5e210fd55cdfbe0623b53d81f564a4a4a67a7da7
+" Plug 'vim-scripts/AutoClose'
 
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
