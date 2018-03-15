@@ -216,8 +216,14 @@ Plug 'ctrlpvim/ctrlp.vim'
 " as you type code completion engine
 " Plug 'valloric/youcompleteme'
 
+" A super simple, super minimal, super light-weight tab-completion plugin for Vim.
+Plug 'ajh17/vimcompletesme'
+
+" perform insert mode completions with tab
+" Plug 'ervandew/supertab'
+
 " syntax checking hacks
-"Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " precision colorscheme for vim
 Plug 'altercation/vim-colors-solarized'
@@ -234,11 +240,14 @@ Plug 'tpope/vim-surround'
 " vim motions on speed
 Plug 'easymotion/vim-easymotion'
 
-" perform insert mode completions with tab
-Plug 'ervandew/supertab'
-
 " manip brackets/parens/quotes in pairs
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+
+" AutoPairs is surely great plugin, but, to me, it behaves too aggressively
+Plug 'vim-scripts/auto-pairs-gentle'
+
+" Better Rainbow Parentheses
+Plug 'kien/rainbow_parentheses.vim'
 
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
@@ -260,6 +269,12 @@ colorscheme solarized
 let g:SuperTabDefaultCompletionType = "context"
 
 "
+" VimCompletesMe options
+"
+" You can change it to cycle backwards through the list by putting the following in your vimrc
+let g:vcm_direction = 'p'
+
+"
 " NERDCommenter config
 "
 
@@ -278,6 +293,11 @@ let g:slime_target = "tmux"
 
 " IPython has a %cpaste magic function that allows for error-free pasting.
 let g:slime_python_ipython = 1
+
+"
+" AutoPairsGentle mandatory config
+"
+let g:AutoPairsUseInsertedCount = 1
 
 "
 " vimR config
