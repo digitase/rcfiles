@@ -241,6 +241,7 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 
 " manip brackets/parens/quotes in pairs
+<<<<<<< HEAD
 " Plug 'jiangmiao/auto-pairs'
 
 " AutoPairs is surely great plugin, but, to me, it behaves too aggressively
@@ -248,6 +249,17 @@ Plug 'vim-scripts/auto-pairs-gentle'
 
 " Better Rainbow Parentheses
 Plug 'kien/rainbow_parentheses.vim'
+=======
+" Too aggressive
+" Plug 'jiangmiao/auto-pairs'
+
+" A modern vim plugin for editing LaTeX files.
+Plug 'lervag/vimtex'
+
+" Inserts matching bracket, paren, brace or quote
+" http://vimawesome.com/plugin/autoclose-with-ourselves
+Plug 'vim-scripts/AutoClose'
+>>>>>>> 5e210fd55cdfbe0623b53d81f564a4a4a67a7da7
 
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
@@ -283,6 +295,17 @@ let NERDSpaceDelims=1
 
 " don't recomment commented lines
 let NERDDefaultNesting=0
+
+" Add your own custom formats or override the defaults
+" Get rid of extra space, presumably the default left is '# '
+let g:NERDCustomDelimiters = {'python': {'left': '#'}}
+
+" Allow commenting and inverting empty lines (useful when commenting a
+" region)
+let NERDCommentEmptyLines=1
+
+" Enable trimming of trailing whitespace when uncommenting
+let NERDTrimTrailingWhitespace=1
 
 "
 " vim-slime config
