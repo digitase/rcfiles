@@ -217,13 +217,13 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'valloric/youcompleteme'
 
 " A super simple, super minimal, super light-weight tab-completion plugin for Vim.
-Plug 'ajh17/vimcompletesme'
+" Plug 'ajh17/vimcompletesme'
 
 " perform insert mode completions with tab
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " syntax checking hacks
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 " precision colorscheme for vim
 Plug 'altercation/vim-colors-solarized'
@@ -274,13 +274,13 @@ colorscheme solarized
 "
 
 " Lets SuperTab decide which completion mode to use and should play well with OmniCompletion
-" let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"
 
 "
 " VimCompletesMe options
 "
 " You can change it to cycle backwards through the list by putting the following in your vimrc
-let g:vcm_direction = 'p'
+" let g:vcm_direction = 'p'
 
 "
 " NERDCommenter config
@@ -317,6 +317,15 @@ let g:slime_python_ipython = 1
 " AutoPairsGentle mandatory config
 "
 let g:AutoPairsUseInsertedCount = 1
+
+"
+" RainbowParentheses config
+" 
+" Keep always on
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 "
 " vimR config
