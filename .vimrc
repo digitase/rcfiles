@@ -65,7 +65,7 @@ set showmatch
 "
 
 " 1 tab == 4 spaces
-set shiftwidth=4
+set shiftwidth=4 " width of an indent when displayed
 set tabstop=4 " width of a TAB when displayed
 
 set expandtab " insert spaces instead of tabs
@@ -218,6 +218,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " A super simple, super minimal, super light-weight tab-completion plugin for Vim.
 " Plug 'ajh17/vimcompletesme'
+"
+" https://github.com/vim-scripts/indentpython.vim For better indentation"
+ Plug 'https://github.com/vim-scripts/indentpython.vim.git'
 
 " perform insert mode completions with tab
 Plug 'ervandew/supertab'
