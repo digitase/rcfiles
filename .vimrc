@@ -260,6 +260,11 @@ Plug 'lervag/vimtex'
 " http://vimawesome.com/plugin/autoclose-with-ourselves
 " Plug 'vim-scripts/AutoClose'
 
+" Adds new text objects. 
+" Note that subsequent plugins depend on kana/vim-textobj-user
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
 call plug#end()
@@ -278,6 +283,13 @@ colorscheme solarized
 
 " Lets SuperTab decide which completion mode to use and should play well with OmniCompletion
 let g:SuperTabDefaultCompletionType = "context"
+
+" Set completion chain for supertab to fallback to default completion type
+" See: :help supertab-completionchaining
+autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \ endif
 
 "
 " VimCompletesMe options
