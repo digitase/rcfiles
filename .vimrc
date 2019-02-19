@@ -387,33 +387,34 @@ au Syntax * RainbowParenthesesLoadBraces
 " let vimrplugin_applescript = 0
 " let vimrplugin_screenplugin = 0
 " For tmux support
-let g:ScreenImpl = 'Tmux'
-let vimrplugin_screenvsplit = 1 " For vertical tmux split
-let g:ScreenShellInitialFocus = 'shell' 
+" let g:ScreenImpl = 'Tmux'
+" For vertical tmux split
+" let vimrplugin_screenvsplit = 1
+" let g:ScreenShellInitialFocus = 'shell'
 " instruct to use your own .screenrc file
-let g:vimrplugin_noscreenrc = 1
+" let g:vimrplugin_noscreenrc = 1
 " For integration of r-plugin with screen.vim
-let g:vimrplugin_screenplugin = 1
+" let g:vimrplugin_screenplugin = 1
 " Don't use conque shell if installed
-let vimrplugin_conqueplugin = 0
+" let vimrplugin_conqueplugin = 0
 " map the letter 'r' to send visually selected lines to R 
-let g:vimrplugin_map_r = 1
+" let g:vimrplugin_map_r = 1
 " see R documentation in a Vim buffer
-let vimrplugin_vimpager = "no"
+" let vimrplugin_vimpager = "no"
 " start R with F2 key
-map <F2> <Plug>RStart 
-imap <F2> <Plug>RStart
-vmap <F2> <Plug>RStart
+" map <F2> <Plug>RStart
+" imap <F2> <Plug>RStart
+" vmap <F2> <Plug>RStart
 " send selection to R with space bar
-vmap <Space> <Plug>RDSendSelection 
+" vmap <Space> <Plug>RDSendSelection
 " send line to R with space bar
-nmap <Space> <Plug>RDSendLine
+" nmap <Space> <Plug>RDSendLine
 
 " Disable underscore(_) automatically converted to (<-) for vimR
-let vimrplugin_assign = 0
+" let vimrplugin_assign = 0
 
 " Show extra info during omnicompletion
-let vimrplugin_show_args = 1
+" let vimrplugin_show_args = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
