@@ -15,6 +15,16 @@ filetype plugin on
 " Load the language specific indent files
 filetype indent on
 
+" Check OS version
+" https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript/2577#2577
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 "
 " Colors and fonts
 "
@@ -22,9 +32,14 @@ filetype indent on
 " Turn on syntax highlighting
 syntax on
 
-" Gui specific options
-if has('gui_running')
-    set guifont=Monospace
+" Gui specific font options
+if has("gui_running")
+    if g:os == "Darwin"
+        set guifont=Monaco:h13
+    elseif g:os == "Linux"
+        set guifont=Andale_Mono:h13
+    " elseif g:os == "Windows"
+    endif
 endif
 
 "
@@ -45,6 +60,7 @@ set cursorline
 
 " show the last (partial) command entered
 set showcmd     
+
 " Set the command window height to 2 lines"
 set cmdheight=2
 
@@ -85,6 +101,16 @@ set backspace=indent,eol,start
 set formatoptions=q
 
 "
+" Spelling
+" 
+
+" set language
+set spelllang=en_nz
+
+" custom spellfile
+set spellfile=~/rcfiles/spell/en.utf-8.add
+
+"
 " Search
 "
 
@@ -113,7 +139,7 @@ inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 " Add a completion menu to command completion
 " That means that on first <Tab> it will complete to the longest common string
 " and will invoke wildmenu (an horizontal and unobstructive little menu). On
-" next <Tab> it will complete the first altenative and the will start to cycle
+" next <Tab> it will complete the first alternative and the will start to cycle
 " through the rest. You can go back and forth with <Tab> and <S-Tab>
 " respectively.
 set wildmenu
@@ -197,13 +223,11 @@ endif
 " begin the section
 call plug#begin('~/.vim/plugged')
 
-" list plugins with Plug commands
-
 " vim REPL 
 Plug 'jpalardy/vim-slime'
 
 " vim plugin to work with R
-" Vim >= 8.0.0, R >= 3.0.0
+" requires: Vim >= 8.0.0, R >= 3.0.0
 " Plug 'jalvesaq/Nvim-R'
 
 " fuzzy filesystem finder
@@ -294,6 +318,7 @@ autocmd FileType *
 "
 " VimCompletesMe options
 "
+
 " You can change it to cycle backwards through the list by putting the following in your vimrc
 " let g:vcm_direction = 'p'
 
@@ -331,16 +356,30 @@ let g:slime_python_ipython = 1
 "
 " AutoPairsGentle mandatory config
 "
+
 let g:AutoPairsUseInsertedCount = 1
 
 "
 " RainbowParentheses config
 " 
+
 " Keep always on
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+"
+" vimtex config
+"
+
+" switch from default tex to latex
+let g:tex_flavor='latex'
+
+" specify the viewer
+if g:os == "Darwin"
+    let g:vimtex_view_method='skim'
+endif
 
 "
 " vimR config
@@ -387,33 +426,33 @@ au Syntax * RainbowParenthesesLoadBraces
 " let vimrplugin_applescript = 0
 " let vimrplugin_screenplugin = 0
 " For tmux support
-let g:ScreenImpl = 'Tmux'
-let vimrplugin_screenvsplit = 1 " For vertical tmux split
-let g:ScreenShellInitialFocus = 'shell' 
+" let g:ScreenImpl = 'Tmux'
+" let vimrplugin_screenvsplit = 1 " For vertical tmux split
+" let g:ScreenShellInitialFocus = 'shell'
 " instruct to use your own .screenrc file
-let g:vimrplugin_noscreenrc = 1
+" let g:vimrplugin_noscreenrc = 1
 " For integration of r-plugin with screen.vim
-let g:vimrplugin_screenplugin = 1
+" let g:vimrplugin_screenplugin = 1
 " Don't use conque shell if installed
-let vimrplugin_conqueplugin = 0
-" map the letter 'r' to send visually selected lines to R 
-let g:vimrplugin_map_r = 1
+" let vimrplugin_conqueplugin = 0
+" map the letter 'r' to send visually selected lines to R
+" let g:vimrplugin_map_r = 1
 " see R documentation in a Vim buffer
-let vimrplugin_vimpager = "no"
+" let vimrplugin_vimpager = "no"
 " start R with F2 key
-map <F2> <Plug>RStart 
-imap <F2> <Plug>RStart
-vmap <F2> <Plug>RStart
+" map <F2> <Plug>RStart
+" imap <F2> <Plug>RStart
+" vmap <F2> <Plug>RStart
 " send selection to R with space bar
-vmap <Space> <Plug>RDSendSelection 
+" vmap <Space> <Plug>RDSendSelection
 " send line to R with space bar
-nmap <Space> <Plug>RDSendLine
-
+" nmap <Space> <Plug>RDSendLine
+"
 " Disable underscore(_) automatically converted to (<-) for vimR
-let vimrplugin_assign = 0
-
+" let vimrplugin_assign = 0
+"
 " Show extra info during omnicompletion
-let vimrplugin_show_args = 1
+" let vimrplugin_show_args = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
