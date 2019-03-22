@@ -427,7 +427,8 @@ endif
 " let vimrplugin_screenplugin = 0
 " For tmux support
 " let g:ScreenImpl = 'Tmux'
-" let vimrplugin_screenvsplit = 1 " For vertical tmux split
+" For vertical tmux split
+" let vimrplugin_screenvsplit = 1
 " let g:ScreenShellInitialFocus = 'shell'
 " instruct to use your own .screenrc file
 " let g:vimrplugin_noscreenrc = 1
