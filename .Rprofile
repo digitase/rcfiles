@@ -12,3 +12,10 @@ local({
     r["CRAN"] <- "https://cloud.r-project.org/"
     options(repos = r)
 })
+
+# Turn off popup dialogs
+options(menu.graphics=F)
+
+# Make errors easier to see
+options(showWarnCalls=T, showErrorCalls=T)
+

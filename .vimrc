@@ -15,6 +15,9 @@ filetype plugin on
 " Load the language specific indent files
 filetype indent on
 
+" Do not align R function args
+let r_indent_align_args = 0
+
 " Check OS version
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript/2577#2577
 if !exists("g:os")
@@ -131,6 +134,9 @@ vnoremap // y/<C-R>"<CR>"
 
 " Omnicompletion
 set omnifunc=syntaxcomplete#Complete
+
+" Set omnifunc that works with python3
+" autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Press Enter to accept the selected word. Hit Esc to cancel completion and go back to the original word. 
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
