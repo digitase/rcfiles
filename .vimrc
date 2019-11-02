@@ -415,5 +415,9 @@ let vimrplugin_assign = 0
 " Show extra info during omnicompletion
 let vimrplugin_show_args = 1
 
+" Don't use the Unicode arrows for dir expand/collapse indicators
+let NERDTreeDirArrowExpandable = '+'
+let NERDTreeDirArrowCollapsible = '~'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
