@@ -41,7 +41,8 @@ if has("gui_running")
         set guifont=Monaco:h13
     elseif g:os == "Linux"
         set guifont=Andale_Mono:h13
-    " elseif g:os == "Windows"
+    elseif g:os == "Windows"
+        set guifont=Consolas:h13
     endif
 endif
 
@@ -220,14 +221,28 @@ imap <ESC>oD <ESC>hi
 "
 
 " auto-install plugin manager
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
+if g:os == 'Windows'
+    if empty(glob('~\vimfiles\autoload\plug.vim'))
+    " if empty(glob("%USERPROFILE%\vimfiles\autoload\plug.vim"))
+        " In the Vim command line, the % is a special placeholder for the
+        " current buffer name. See :help cmdline-special. To avoid the
+        " expansion, just escape the character with a backslash.
+        silent !curl -fLo "\%USERPROFILE\%\vimfiles\autoload\plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+elseif g:os == 'Linux' || g:os == 'Darwin'
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo '~/.vim/autoload/plug.vim' --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
 endif
 
 " begin the section
-call plug#begin('~/.vim/plugged')
+if g:os == "Windows"
+    call plug#begin('~\vimfiles\plugged') 
+elseif g:os == "Linux" || g:os == "Darwin"
+    call plug#begin('~/.vim/plugged') 
+endif
 
 " vim REPL 
 Plug 'jpalardy/vim-slime'
