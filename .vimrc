@@ -310,6 +310,9 @@ Plug 'lervag/vimtex'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 
+" Distraction-free writing in Vim.
+Plug 'junegunn/goyo.vim'
+
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
 call plug#end()
