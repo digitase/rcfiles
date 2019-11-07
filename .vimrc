@@ -227,7 +227,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'jpalardy/vim-slime'
 
 " vim plugin to work with R
-" requires: Vim >= 8.0.0, R >= 3.0.0
+" NOTE: requires: Vim >= 8.0.0, R >= 3.0.0
 " Plug 'jalvesaq/Nvim-R'
 
 " fuzzy filesystem finder
@@ -242,9 +242,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " A super simple, super minimal, super light-weight tab-completion plugin for Vim.
 " Plug 'ajh17/vimcompletesme'
-"
-" https://github.com/vim-scripts/indentpython.vim For better indentation"
- Plug 'https://github.com/vim-scripts/indentpython.vim.git'
 
 " perform insert mode completions with tab
 Plug 'ervandew/supertab'
@@ -267,8 +264,15 @@ Plug 'tpope/vim-surround'
 " vim motions on speed
 Plug 'easymotion/vim-easymotion'
 
+" https://github.com/vim-scripts/indentpython.vim For better indentation"
+ Plug 'https://github.com/vim-scripts/indentpython.vim.git'
+
 " Better Rainbow Parentheses
 Plug 'kien/rainbow_parentheses.vim'
+
+" Inserts matching bracket, paren, brace or quote
+" http://vimawesome.com/plugin/autoclose-with-ourselves
+" Plug 'vim-scripts/AutoClose'
 
 " manip brackets/parens/quotes in pairs
 " Too aggressive
@@ -279,10 +283,6 @@ Plug 'vim-scripts/auto-pairs-gentle'
 
 " A modern vim plugin for editing LaTeX files.
 Plug 'lervag/vimtex'
-
-" Inserts matching bracket, paren, brace or quote
-" http://vimawesome.com/plugin/autoclose-with-ourselves
-" Plug 'vim-scripts/AutoClose'
 
 " Adds new text objects. 
 " Note that subsequent plugins depend on kana/vim-textobj-user
@@ -380,6 +380,9 @@ let g:tex_flavor='latex'
 if g:os == "Darwin"
     let g:vimtex_view_method='skim'
 endif
+
+" only allow completion on the bibkeys directly, instead of searching whole entries.
+let g:vimtex_complete_bib = { 'simple': 1 }
 
 "
 " vimR config
