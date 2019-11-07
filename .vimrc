@@ -24,7 +24,9 @@ if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
     elseif has("win32unix")
-        let g:os = "Linux"
+        let g:os = "Cygwin"
+        " Defaults for git bash shell only include /.vim
+        set rtp+=~/vimfiles
     else
         let g:os = substitute(system('uname'), '\n', '', '')
     endif
@@ -224,12 +226,17 @@ imap <ESC>oD <ESC>hi
 
 " auto-install plugin manager
 if g:os == 'Windows'
-    if empty(glob('~\vimfiles\autoload\plug.vim'))
-    " if empty(glob("%USERPROFILE%\vimfiles\autoload\plug.vim"))
+    if empty(glob('~/vimfiles/autoload/plug.vim'))
+        " For windows cmd, neither ~ nor $HOME are defined.
         " In the Vim command line, the % is a special placeholder for the
         " current buffer name. See :help cmdline-special. To avoid the
         " expansion, just escape the character with a backslash.
         silent !curl -fLo "\%USERPROFILE\%\vimfiles\autoload\plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+elseif g:os == 'Cygwin'
+    if empty(glob('~/vimfiles/autoload/plug.vim'))
+        silent !curl -fLo "$HOME/vimfiles/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 elseif g:os == 'Linux' || g:os == 'Darwin'
@@ -242,6 +249,8 @@ endif
 " begin the section
 if g:os == "Windows"
     call plug#begin('~\vimfiles\plugged') 
+elseif g:os == "Cygwin"
+    call plug#begin('~/vimfiles/plugged')
 elseif g:os == "Linux" || g:os == "Darwin"
     call plug#begin('~/.vim/plugged') 
 endif
