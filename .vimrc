@@ -21,8 +21,10 @@ let r_indent_align_args = 0
 " Check OS version
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript/2577#2577
 if !exists("g:os")
-    if has("win64") || has("win32") || has("win16") || has("win32unix")
+    if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
+    elseif has("win32unix")
+        let g:os = "Linux"
     else
         let g:os = substitute(system('uname'), '\n', '', '')
     endif
