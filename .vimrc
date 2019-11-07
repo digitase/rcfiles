@@ -15,11 +15,18 @@ filetype plugin on
 " Load the language specific indent files
 filetype indent on
 
+" Do not align R function args
+let r_indent_align_args = 0
+
 " Check OS version
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript/2577#2577
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
+    elseif has("win32unix")
+        let g:os = "Cygwin"
+        " Defaults for git bash shell only include /.vim
+        set rtp+=~/vimfiles
     else
         let g:os = substitute(system('uname'), '\n', '', '')
     endif
@@ -38,7 +45,8 @@ if has("gui_running")
         set guifont=Monaco:h13
     elseif g:os == "Linux"
         set guifont=Andale_Mono:h13
-    " elseif g:os == "Windows"
+    elseif g:os == "Windows"
+        set guifont=Consolas:h13
     endif
 endif
 
@@ -132,6 +140,9 @@ vnoremap // y/<C-R>"<CR>"
 " Omnicompletion
 set omnifunc=syntaxcomplete#Complete
 
+" Set omnifunc that works with python3
+" autocmd FileType python setlocal omnifunc=python3complete#Complete
+
 " Press Enter to accept the selected word. Hit Esc to cancel completion and go back to the original word. 
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
@@ -214,14 +225,36 @@ imap <ESC>oD <ESC>hi
 "
 
 " auto-install plugin manager
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
+if g:os == 'Windows'
+    if empty(glob('~/vimfiles/autoload/plug.vim'))
+        " For windows cmd, neither ~ nor $HOME are defined.
+        " In the Vim command line, the % is a special placeholder for the
+        " current buffer name. See :help cmdline-special. To avoid the
+        " expansion, just escape the character with a backslash.
+        silent !curl -fLo "\%USERPROFILE\%\vimfiles\autoload\plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+elseif g:os == 'Cygwin'
+    if empty(glob('~/vimfiles/autoload/plug.vim'))
+        silent !curl -fLo "$HOME/vimfiles/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+elseif g:os == 'Linux' || g:os == 'Darwin'
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo '~/.vim/autoload/plug.vim' --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
 endif
 
 " begin the section
-call plug#begin('~/.vim/plugged')
+if g:os == "Windows" || g:os == "Cygwin"
+    call plug#begin('~/vimfiles/plugged')
+    " call plug#begin('~\vimfiles\plugged')
+" elseif g:os == "Cygwin"
+    " call plug#begin('~/vimfiles/plugged')
+elseif g:os == "Linux" || g:os == "Darwin"
+    call plug#begin('~/.vim/plugged') 
+endif
 
 " vim REPL 
 Plug 'jpalardy/vim-slime'
@@ -288,6 +321,9 @@ Plug 'lervag/vimtex'
 " Note that subsequent plugins depend on kana/vim-textobj-user
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
+
+" Distraction-free writing in Vim.
+Plug 'junegunn/goyo.vim'
 
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
@@ -379,6 +415,17 @@ let g:tex_flavor='latex'
 " specify the viewer
 if g:os == "Darwin"
     let g:vimtex_view_method='skim'
+elseif g:os == "Windows"
+    let g:vimtex_view_general_viewer = $HOME . '/Documents/software/SumatraPDF-3.1.2-64/SumatraPDF'
+    let g:vimtex_view_general_options
+        \ = '-reuse-instance -forward-search @tex @line @pdf'
+        \ . ' -inverse-search "' . exepath(v:progpath)
+        \ . ' --servername ' . v:servername
+        \ . ' --remote-send \"^<C-\^>^<C-n^>'
+        \ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
+        \ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
+        \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 endif
 
 " only allow completion on the bibkeys directly, instead of searching whole entries.
@@ -457,6 +504,10 @@ let g:vimtex_complete_bib = { 'simple': 1 }
 "
 " Show extra info during omnicompletion
 " let vimrplugin_show_args = 1
+
+" Don't use the Unicode arrows for dir expand/collapse indicators
+let NERDTreeDirArrowExpandable = '+'
+let NERDTreeDirArrowCollapsible = '~'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
