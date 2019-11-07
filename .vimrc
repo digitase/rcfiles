@@ -247,10 +247,11 @@ elseif g:os == 'Linux' || g:os == 'Darwin'
 endif
 
 " begin the section
-if g:os == "Windows"
-    call plug#begin('~\vimfiles\plugged') 
-elseif g:os == "Cygwin"
+if g:os == "Windows" || g:os == "Cygwin"
     call plug#begin('~/vimfiles/plugged')
+    " call plug#begin('~\vimfiles\plugged')
+" elseif g:os == "Cygwin"
+    " call plug#begin('~/vimfiles/plugged')
 elseif g:os == "Linux" || g:os == "Darwin"
     call plug#begin('~/.vim/plugged') 
 endif
@@ -414,6 +415,17 @@ let g:tex_flavor='latex'
 " specify the viewer
 if g:os == "Darwin"
     let g:vimtex_view_method='skim'
+elseif g:os == "Windows"
+    let g:vimtex_view_general_viewer = $HOME . '/Documents/software/SumatraPDF-3.1.2-64/SumatraPDF'
+    let g:vimtex_view_general_options
+        \ = '-reuse-instance -forward-search @tex @line @pdf'
+        \ . ' -inverse-search "' . exepath(v:progpath)
+        \ . ' --servername ' . v:servername
+        \ . ' --remote-send \"^<C-\^>^<C-n^>'
+        \ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
+        \ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
+        \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 endif
 
 "
