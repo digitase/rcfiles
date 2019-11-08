@@ -324,6 +324,7 @@ Plug 'kana/vim-textobj-line'
 
 " Distraction-free writing in Vim.
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
@@ -379,6 +380,12 @@ let NERDCommentEmptyLines=1
 " Enable trimming of trailing whitespace when uncommenting
 let NERDTrimTrailingWhitespace=1
 
+" Align line-wise comment delimiters to start instead of following code indentation
+let g:NERDDefaultAlign = 'start'
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
 "
 " vim-slime config
 "
@@ -404,6 +411,12 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+"
+" Set Goyo to sync with Limelight
+"
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 "
 " vimtex config
