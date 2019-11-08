@@ -326,6 +326,10 @@ Plug 'kana/vim-textobj-line'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
+" Peekaboo will show you the contents of the registers on the sidebar when you
+" hit " or @ in normal mode or <CTRL-R> in insert mode.
+Plug 'junegunn/vim-peekaboo'
+
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
 call plug#end()
@@ -413,10 +417,10 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 "
-" Set Goyo to sync with Limelight
+" Set Goyo to sync with Limelight and wrap settings
 "
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+autocmd! User GoyoEnter Limelight | setlocal wrap linebreak
+autocmd! User GoyoLeave Limelight! | setlocal nowrap nolinebreak
 
 "
 " vimtex config
