@@ -1,1 +1,8 @@
+# Mac
 .DS_Store
+
+# Vim swap
+*.swp
+
+# Vim spelling
+*.spl

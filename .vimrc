@@ -266,8 +266,8 @@ Plug 'jpalardy/vim-slime'
 " fuzzy filesystem finder
 Plug 'ctrlpvim/ctrlp.vim'
 
-"  Seamless navigation between tmux panes and vim splits
-"  NOTE: This requires tmux v1.8 or higher.
+" Seamless navigation between tmux panes and vim splits
+" NOTE: This requires tmux v1.8 or higher.
 " Plug 'christoomey/vim-tmux-navigator'
 
 " as you type code completion engine
@@ -474,7 +474,7 @@ let g:vimtex_complete_bib = { 'simple': 1 }
 " Useful tmux commands
 "       tmux new -s <myname>       start new session with a specific name
 "	tmux ls (C-a-s)            list tmux session
-"       tmux attach -t <id>        attach to specific session  
+"       tmux attach -t <id>        attach to specific session
 "       tmux kill-session -t <id>  kill specific session
 " 	C-a-: kill-session         kill a session
 " 	C-a %                      split pane vertically
