@@ -271,6 +271,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'christoomey/vim-tmux-navigator'
 
 " as you type code completion engine
+" NOTE: may require :echo has('python')
 " Plug 'valloric/youcompleteme'
 
 " A super simple, super minimal, super light-weight tab-completion plugin for Vim.
