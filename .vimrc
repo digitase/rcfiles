@@ -369,10 +369,10 @@ autocmd FileType *
 "
 
 " place spaces after comment chars
-let NERDSpaceDelims=1
+let g:NERDSpaceDelims=1
 
 " don't recomment commented lines
-let NERDDefaultNesting=0
+let g:NERDDefaultNesting=0
 
 " Add your own custom formats or override the defaults
 " Get rid of extra space, presumably the default left is '# '
@@ -380,13 +380,13 @@ let g:NERDCustomDelimiters = {'python': {'left': '#'}}
 
 " Allow commenting and inverting empty lines (useful when commenting a
 " region)
-let NERDCommentEmptyLines=1
+let g:NERDCommentEmptyLines=1
 
-" Enable trimming of trailing whitespace when uncommenting
-let NERDTrimTrailingWhitespace=1
-
-" Align line-wise comment delimiters to start instead of following code indentation
-let g:NERDDefaultAlign = 'start'
+" Specify how to align line-wise comment delimiters 
+" Start of line
+" let g:NERDDefaultAlign = 'start'
+" Follow code indentation
+let g:NERDDefaultAlign = 'left'
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
