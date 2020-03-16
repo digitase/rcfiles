@@ -398,6 +398,11 @@ let g:NERDTrimTrailingWhitespace = 1
 " Use tmux instead of screen (default)
 let g:slime_target = "tmux"
 
+" Configure the slime defaults for tmux use
+" NOTE: need to start with tmux -L <socket_name>, as session name is not
+" socket name.
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": "{next}"}
+
 " IPython has a %cpaste magic function that allows for error-free pasting.
 let g:slime_python_ipython = 1
 

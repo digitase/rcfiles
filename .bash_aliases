@@ -40,6 +40,14 @@ function tmux_refresh_env_vars {
     fi
 }
 
+# List active tmux sockets
+function tmux_get_active_sockets {
+    for tmux_socket_path in $(lsof -U | grep '^tmux' | awk '{print $9}'); do
+        echo "$tmux_socket_path"
+        printf '\t%s\n' "$(tmux -S $tmux_socket_path ls)"
+    done
+}
+
 # Therefore I wrote a little wrapper around tmux for the bash shell. This adds a
 # new command tmux update-environment that updates the environment variables from
 # the current session environment: 
