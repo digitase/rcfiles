@@ -137,7 +137,9 @@ vnoremap // y/<C-R>"<CR>"
 " Autocompletion
 "
 
-" Omnicompletion
+" Omnicompletion on.
+" Omni completion provides smart autocompletion for programs. When invoked,
+" the text before the cursor is inspected to guess what might follow.
 set omnifunc=syntaxcomplete#Complete
 
 " Set omnifunc that works with python3
@@ -160,7 +162,8 @@ set wildmode=longest,list
 " matches; and the menu will come up even if there's only one match
 set completeopt=longest,menuone
 
-" Turn off completion from unloaded buffers
+" Turn off completion from (u)nloaded buffers
+" The default value of complete option is .,w,b,u,t,i
 " Stops vim searching closed large files.
 set complete=.,w,b,t,i
 
@@ -425,15 +428,15 @@ au Syntax * RainbowParenthesesLoadBraces
 "
 " Set Goyo to sync with Limelight and wrap settings
 "
-autocmd! User GoyoEnter Limelight | setlocal wrap linebreak
-autocmd! User GoyoLeave Limelight! | setlocal nowrap nolinebreak
+autocmd! User GoyoEnter Limelight | setlocal wrap linebreak | let g:vimtex_quickfix_mode = 0
+autocmd! User GoyoLeave Limelight! | setlocal nowrap nolinebreak | let g:vimtex_quickfix_mode = 2
 
 "
 " vimtex config
 "
 
 " switch from default tex to latex
-let g:tex_flavor='latex'
+let g:tex_flavor = 'latex'
 
 " specify the viewer
 if g:os == "Darwin"
@@ -452,7 +455,15 @@ elseif g:os == "Windows"
 endif
 
 " only allow completion on the bibkeys directly, instead of searching whole entries.
+" NOTE: this only overrides 'simple'
 let g:vimtex_complete_bib = { 'simple': 1 }
+
+" disable searching for included files in system TeX distribution with `kpsewhich`
+" NOTE: kpsewhich calls are now cached
+" let g:vimtex_include_search_enabled = 0
+
+" If set to value greater than zero, then the quickfix window will close after this number of motions.
+" let g:vimtex_quickfix_autoclose_after_keystrokes = 1
 
 "
 " vimR config
