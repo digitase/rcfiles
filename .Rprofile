@@ -2,7 +2,7 @@
 # vimcom configuration
 # if(interactive()){
     # library(setwidth)
-    options(vimcom.verbose = 1) # optional
+    # options(vimcom.verbose = 1)
     # library(vimcom)
 # }
 
