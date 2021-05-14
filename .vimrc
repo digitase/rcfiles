@@ -9,14 +9,9 @@ set nocompatible
 " Change current dir on open
 set autochdir
 
-" enable loading the plugin files for specific file types
-filetype plugin on
-
-" Load the language specific indent files
-filetype indent on
-
-" Do not align R function args
-let r_indent_align_args = 0
+" Enable loading the plugin files for specific file types
+" Also load the language specific indent files
+filetype plugin indent on
 
 " Check OS version
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript/2577#2577
@@ -95,9 +90,6 @@ set tabstop=4 " width of a TAB when displayed
 set expandtab " insert spaces instead of tabs
 set softtabstop=4 " number of spaces inserted in place of a TAB
 
-" Be smart when using tabs
-set smarttab
-
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
@@ -107,6 +99,9 @@ set backspace=indent,eol,start
 
 " Prevent auto wrapping of text and continuation of comments
 set formatoptions=q
+
+" Do not align R function args
+let r_indent_align_args = 0
 
 "
 " Spelling
@@ -146,6 +141,7 @@ set omnifunc=syntaxcomplete#Complete
 " autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Press Enter to accept the selected word. Hit Esc to cancel completion and go back to the original word. 
+" NOTE: This conflicts with vim-closer
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -317,6 +313,18 @@ Plug 'kien/rainbow_parentheses.vim'
 
 " AutoPairs is surely great plugin, but, to me, it behaves too aggressively
 Plug 'vim-scripts/auto-pairs-gentle'
+
+" Closes brackets. Perfect companion to vim-endwise. Basically, a more
+" conservative version of auto-pairs that only works when you press Enter.
+" NOTE: Doesn't work with .R
+" Plug 'rstacruz/vim-closer'
+
+" This plug-in provides automatic closing of quotes, parenthesis, brackets,
+" etc., besides some other related features that should make your time in insert
+" mode a little bit easier, like syntax awareness (will not insert the closing
+" delimiter in comments and other configurable regions), and expansions (off by
+" default), and some more.
+" Plug 'raimondi/delimitmate'
 
 " A modern vim plugin for editing LaTeX files.
 Plug 'lervag/vimtex'
