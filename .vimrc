@@ -342,6 +342,9 @@ Plug 'junegunn/limelight.vim'
 " hit " or @ in normal mode or <CTRL-R> in insert mode.
 Plug 'junegunn/vim-peekaboo'
 
+" Open URI with your favorite browser from your most favorite editor.
+Plug 'tyru/open-browser.vim'
+
 " end the section to add plugins to &runtimepath
 " Reload .vimrc and :PlugInstall to install plugins.
 call plug#end()
@@ -402,6 +405,10 @@ let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+" Don't use the Unicode arrows for dir expand/collapse indicators
+let NERDTreeDirArrowExpandable = '+'
+let NERDTreeDirArrowCollapsible = '~'
+
 "
 " vim-slime config
 "
@@ -440,6 +447,15 @@ autocmd! User GoyoEnter Limelight | setlocal wrap linebreak | let g:vimtex_quick
 autocmd! User GoyoLeave Limelight! | setlocal nowrap nolinebreak | let g:vimtex_quickfix_mode = 2
 
 "
+" openbrowser config
+"
+
+" disable netrw's gx mapping.
+let g:netrw_nogx = 1 
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search) 
+
+"
 " vimtex config
 "
 
@@ -472,6 +488,14 @@ let g:vimtex_complete_bib = { 'simple': 1 }
 
 " If set to value greater than zero, then the quickfix window will close after this number of motions.
 " let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+
+" Indendation vimtex indentation in tex and bib files.
+let g:vimtex_indent_enabled = 1
+let g:vimtex_indent_bib_enabled = 0
+
+" Enable folding, manual refresh with zx
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_manual = 1
 
 "
 " vimR config
@@ -546,10 +570,6 @@ let g:vimtex_complete_bib = { 'simple': 1 }
 "
 " Show extra info during omnicompletion
 " let vimrplugin_show_args = 1
-
-" Don't use the Unicode arrows for dir expand/collapse indicators
-let NERDTreeDirArrowExpandable = '+'
-let NERDTreeDirArrowCollapsible = '~'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
