@@ -33,6 +33,9 @@ export EDITOR="$VISUAL"
 # Force tmux to assume the terminal supports 256 colours.
 alias tmux="tmux -2"
 
+# Set directory to store tmux sockets
+export TMUX_TMPDIR="$HOME/tmp"
+
 # Gets fresh environment variables for tmux
 function tmux_refresh_env_vars {
     if [ -n "$TMUX"  ]; then
