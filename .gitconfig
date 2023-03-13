@@ -5,3 +5,5 @@
 [user]
 	email = 5470119+digitase@users.noreply.github.com
 	name = Ben Bai (digitase)
+[credential]
+	helper = cache

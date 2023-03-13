@@ -51,6 +51,18 @@ function tmux_get_active_sockets {
     done
 }
 
+# Restart a dead tmux server
+function tmux_restart_server {
+    if [ -z "$1" ]; then
+        echo No server name specified.
+        return
+    fi
+    tmux_process=$(ps ux | grep tmux | grep "\-L $1" | awk '{print $2}')
+    echo kill -10 PID: "$tmux_process"
+    kill -10 "$tmux_process"
+    tmux_get_active_sockets
+}
+
 # Therefore I wrote a little wrapper around tmux for the bash shell. This adds a
 # new command tmux update-environment that updates the environment variables from
 # the current session environment: 
