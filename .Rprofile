@@ -14,8 +14,11 @@ local({
 })
 
 # Turn off popup dialogs
-options(menu.graphics=F)
+options(menu.graphics = F)
 
 # Make errors easier to see
-options(showWarnCalls=T, showErrorCalls=T)
+options(showWarnCalls = T, showErrorCalls = T)
+
+# Set max screen width
+options(width = 128)
 

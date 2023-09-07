@@ -326,6 +326,11 @@ Plug 'vim-scripts/auto-pairs-gentle'
 " default), and some more.
 " Plug 'raimondi/delimitmate'
 
+" Updated Snakemake syntax highlighting copied from the official repository.
+" Contains keywords from Snakemake (version 5+) such as checkpoint, shadow.
+Plug 'raivivek/vim-snakemake'
+au FileType snakemake set shiftwidth=4 softtabstop=4 expandtab
+
 " A modern vim plugin for editing LaTeX files.
 Plug 'lervag/vimtex'
 
