@@ -1,6 +1,8 @@
-# Bash aliases
+#
+# (Ba)sh aliases
+#
 
-# Append to PATH
+# Appends to PATH
 PATH="$HOME/bin:$PATH"
 
 # enable color support of ls and also add handy aliases
