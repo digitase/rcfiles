@@ -1,3 +1,6 @@
+#
+# Config for GNU readline library
+#
 
 # Use Vi, not Emacs, style editing
 set editing-mode vi
