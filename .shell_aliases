@@ -3,7 +3,7 @@
 #
 
 # Appends to PATH
-PATH="$HOME/bin:$PATH"
+# PATH="$HOME/bin:$PATH"
 
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
@@ -34,6 +34,9 @@ export EDITOR="$VISUAL"
 
 # Force tmux to assume the terminal supports 256 colours.
 alias tmux="tmux -2"
+
+# Default wide layout for bjobs
+# alias bjobs='bjobs -w'
 
 # Set directory to store tmux sockets
 export TMUX_TMPDIR="$HOME/tmp"
