@@ -48,8 +48,11 @@ endif
 " UI
 "
 
-" Stop annoying people
-set visualbell
+" Replace sound error with visual, but disable the flash
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+    autocmd GUIEnter * set visualbell t_vb=
+endif
 
 " Display the cursor position on the last line of the screen or in the status line of a window
 set ruler
@@ -160,7 +163,7 @@ set completeopt=longest,menuone
 " Turn off completion from (u)nloaded buffers
 " The default value of complete option is .,w,b,u,t,i
 " Stops vim searching closed large files.
-set complete=.,w,b,t,i
+set complete=.,w,b,t,u
 
 "
 " History
@@ -470,7 +473,7 @@ let g:tex_flavor = 'latex'
 if g:os == "Darwin"
     let g:vimtex_view_method='skim'
 elseif g:os == "Windows"
-    let g:vimtex_view_general_viewer = $HOME . '/Documents/software/SumatraPDF-3.1.2-64/SumatraPDF'
+    let g:vimtex_view_general_viewer = $HOME . '/Documents/software/SumatraPDF-3.5.2-64/SumatraPDF-3.5.2-64.exe'
     let g:vimtex_view_general_options
         \ = '-reuse-instance -forward-search @tex @line @pdf'
         \ . ' -inverse-search "' . exepath(v:progpath)
@@ -479,7 +482,8 @@ elseif g:os == "Windows"
         \ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
         \ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
         \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
-    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+    " DEPRECATED
+    " let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 endif
 
 " only allow completion on the bibkeys directly, instead of searching whole entries.
