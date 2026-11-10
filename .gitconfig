@@ -5,5 +5,12 @@
 [user]
 	email = 5470119+digitase@users.noreply.github.com
 	name = Ben Bai (digitase)
+	signingkey = ~/.ssh/id_ed25519.pub # Key to use for signing
 [credential]
-	helper = store
+	helper = store # Where to store credentials
+[gpg]
+	format = ssh # Sign with SSH key
+[commit]
+	gpgsign = true # Sign commits
+[tag]
+	gpgsign = true # Sign tags
