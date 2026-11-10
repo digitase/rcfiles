@@ -1,6 +1,10 @@
 #
 # (Ba)sh aliases
 #
+# Add this to the approriate shell rc to source
+# if [ -f ~/.shell_aliases ]; then
+#    . ~/.shell_aliases
+# fi
 
 # Appends to PATH
 # PATH="$HOME/bin:$PATH"
