@@ -1,16 +1,10 @@
 "
 " Init
+" Anything that is needed before vim-plug
 "
 
 " Use Vim settings, rather then Vi settings (much better!).
 set nocompatible
-
-" Change current dir on open
-set autochdir
-
-" Enable loading the plugin files for specific file types
-" Also load the language specific indent files
-filetype plugin indent on
 
 " Check OS version
 " https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript/2577#2577
@@ -25,6 +19,158 @@ if !exists("g:os")
         let g:os = substitute(system('uname'), '\n', '', '')
     endif
 endif
+
+"
+" vim-plug section
+" A minimalist vim plugin manager
+"
+
+" auto-install plugin manager
+if g:os == 'Windows'
+    if empty(glob('~/vimfiles/autoload/plug.vim'))
+        " For windows cmd, neither ~ nor $HOME are defined.
+        " In the Vim command line, the % is a special placeholder for the
+        " current buffer name. See :help cmdline-special. To avoid the
+        " expansion, just escape the character with a backslash.
+        silent !curl -fLo "\%USERPROFILE\%\vimfiles\autoload\plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+elseif g:os == 'Cygwin'
+    if empty(glob('~/vimfiles/autoload/plug.vim'))
+        silent !curl -fLo "$HOME/vimfiles/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+elseif g:os == 'Linux' || g:os == 'Darwin'
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+endif
+
+" begin the section
+if g:os == "Windows" || g:os == "Cygwin"
+    call plug#begin('~/vimfiles/plugged')
+    " call plug#begin('~\vimfiles\plugged')
+" elseif g:os == "Cygwin"
+    " call plug#begin('~/vimfiles/plugged')
+elseif g:os == "Linux" || g:os == "Darwin"
+    call plug#begin('~/.vim/plugged') 
+endif
+
+" vim REPL 
+Plug 'jpalardy/vim-slime'
+
+" vim plugin to work with R
+" NOTE: requires: Vim >= 8.0.0, R >= 3.0.0
+" Plug 'jalvesaq/Nvim-R'
+
+" fuzzy filesystem finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Seamless navigation between tmux panes and vim splits
+" NOTE: This requires tmux v1.8 or higher.
+" Plug 'christoomey/vim-tmux-navigator'
+
+" as you type code completion engine
+" NOTE: may require :echo has('python')
+" Plug 'valloric/youcompleteme'
+
+" A super simple, super minimal, super light-weight tab-completion plugin for Vim.
+" Plug 'ajh17/vimcompletesme'
+
+" perform insert mode completions with tab
+" NOTE: there is a check in supertab.vim: if !has('nvim') && v:version < 900
+" supertab is now using the vim9 plugin manager, and silently exits if not using <vim9
+" https://github.com/ervandew/supertab/issues/224#issuecomment-5457011755
+" Specify an older version that works with vim-plug and vim8
+Plug 'ervandew/supertab', { 'tag': '2.0' }
+
+" syntax checking hacks
+" Plug 'scrooloose/syntastic'
+
+" precision colorscheme for vim
+Plug 'altercation/vim-colors-solarized'
+
+" commenting plugin
+Plug 'scrooloose/nerdcommenter'
+
+" tree explorer plugin
+Plug 'scrooloose/nerdtree'
+
+" quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+" vim motions on speed
+Plug 'easymotion/vim-easymotion'
+
+" https://github.com/vim-scripts/indentpython.vim For better indentation"
+ Plug 'https://github.com/vim-scripts/indentpython.vim.git'
+
+" Better Rainbow Parentheses
+Plug 'kien/rainbow_parentheses.vim'
+
+" Inserts matching bracket, paren, brace or quote
+" http://vimawesome.com/plugin/autoclose-with-ourselves
+" Plug 'vim-scripts/AutoClose'
+
+" manip brackets/parens/quotes in pairs
+" Too aggressive
+" Plug 'jiangmiao/auto-pairs'
+
+" AutoPairs is surely great plugin, but, to me, it behaves too aggressively
+Plug 'vim-scripts/auto-pairs-gentle'
+
+" Closes brackets. Perfect companion to vim-endwise. Basically, a more
+" conservative version of auto-pairs that only works when you press Enter.
+" NOTE: Doesn't work with .R
+" Plug 'rstacruz/vim-closer'
+
+" This plug-in provides automatic closing of quotes, parenthesis, brackets,
+" etc., besides some other related features that should make your time in insert
+" mode a little bit easier, like syntax awareness (will not insert the closing
+" delimiter in comments and other configurable regions), and expansions (off by
+" default), and some more.
+" Plug 'raimondi/delimitmate'
+
+" Updated Snakemake syntax highlighting copied from the official repository.
+" Contains keywords from Snakemake (version 5+) such as checkpoint, shadow.
+Plug 'raivivek/vim-snakemake'
+au FileType snakemake set shiftwidth=4 softtabstop=4 expandtab
+
+" A modern vim plugin for editing LaTeX files.
+Plug 'lervag/vimtex'
+
+" Adds new text objects. 
+" Note that subsequent plugins depend on kana/vim-textobj-user
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+
+" Distraction-free writing in Vim.
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+" Peekaboo will show you the contents of the registers on the sidebar when you
+" hit " or @ in normal mode or <CTRL-R> in insert mode.
+Plug 'junegunn/vim-peekaboo'
+
+" Open URI with your favorite browser from your most favorite editor.
+Plug 'tyru/open-browser.vim'
+
+" end the vim-plug section to add plugins to &runtimepath
+" Reload .vimrc and :PlugInstall to install plugins.
+call plug#end()
+
+"
+" File management
+"
+
+" Automatically keep working dir the same as the current file
+set autochdir
+
+" Enable filetype detection
+" Load the plugin files for specific file types (ftplugin)
+" Load the language specific indent files (indent)
+filetype plugin indent on
 
 "
 " Colors and fonts
@@ -221,140 +367,8 @@ imap <ESC>oD <ESC>hi
 " nnoremap <silent> <C-l> :call <SID>NavigateTermSplits('l')<CR>
 
 "
-" vim-plug section
-" A minimalist vim plugin manager
+" vim-plug plugin-specific config
 "
-
-" auto-install plugin manager
-if g:os == 'Windows'
-    if empty(glob('~/vimfiles/autoload/plug.vim'))
-        " For windows cmd, neither ~ nor $HOME are defined.
-        " In the Vim command line, the % is a special placeholder for the
-        " current buffer name. See :help cmdline-special. To avoid the
-        " expansion, just escape the character with a backslash.
-        silent !curl -fLo "\%USERPROFILE\%\vimfiles\autoload\plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-elseif g:os == 'Cygwin'
-    if empty(glob('~/vimfiles/autoload/plug.vim'))
-        silent !curl -fLo "$HOME/vimfiles/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-elseif g:os == 'Linux' || g:os == 'Darwin'
-    if empty(glob('~/.vim/autoload/plug.vim'))
-        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-endif
-
-" begin the section
-if g:os == "Windows" || g:os == "Cygwin"
-    call plug#begin('~/vimfiles/plugged')
-    " call plug#begin('~\vimfiles\plugged')
-" elseif g:os == "Cygwin"
-    " call plug#begin('~/vimfiles/plugged')
-elseif g:os == "Linux" || g:os == "Darwin"
-    call plug#begin('~/.vim/plugged') 
-endif
-
-" vim REPL 
-Plug 'jpalardy/vim-slime'
-
-" vim plugin to work with R
-" NOTE: requires: Vim >= 8.0.0, R >= 3.0.0
-" Plug 'jalvesaq/Nvim-R'
-
-" fuzzy filesystem finder
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Seamless navigation between tmux panes and vim splits
-" NOTE: This requires tmux v1.8 or higher.
-" Plug 'christoomey/vim-tmux-navigator'
-
-" as you type code completion engine
-" NOTE: may require :echo has('python')
-" Plug 'valloric/youcompleteme'
-
-" A super simple, super minimal, super light-weight tab-completion plugin for Vim.
-" Plug 'ajh17/vimcompletesme'
-
-" perform insert mode completions with tab
-Plug 'ervandew/supertab'
-
-" syntax checking hacks
-" Plug 'scrooloose/syntastic'
-
-" precision colorscheme for vim
-Plug 'altercation/vim-colors-solarized'
-
-" commenting plugin
-Plug 'scrooloose/nerdcommenter'
-
-" tree explorer plugin
-Plug 'scrooloose/nerdtree'
-
-" quoting/parenthesizing made simple
-Plug 'tpope/vim-surround'
-
-" vim motions on speed
-Plug 'easymotion/vim-easymotion'
-
-" https://github.com/vim-scripts/indentpython.vim For better indentation"
- Plug 'https://github.com/vim-scripts/indentpython.vim.git'
-
-" Better Rainbow Parentheses
-Plug 'kien/rainbow_parentheses.vim'
-
-" Inserts matching bracket, paren, brace or quote
-" http://vimawesome.com/plugin/autoclose-with-ourselves
-" Plug 'vim-scripts/AutoClose'
-
-" manip brackets/parens/quotes in pairs
-" Too aggressive
-" Plug 'jiangmiao/auto-pairs'
-
-" AutoPairs is surely great plugin, but, to me, it behaves too aggressively
-Plug 'vim-scripts/auto-pairs-gentle'
-
-" Closes brackets. Perfect companion to vim-endwise. Basically, a more
-" conservative version of auto-pairs that only works when you press Enter.
-" NOTE: Doesn't work with .R
-" Plug 'rstacruz/vim-closer'
-
-" This plug-in provides automatic closing of quotes, parenthesis, brackets,
-" etc., besides some other related features that should make your time in insert
-" mode a little bit easier, like syntax awareness (will not insert the closing
-" delimiter in comments and other configurable regions), and expansions (off by
-" default), and some more.
-" Plug 'raimondi/delimitmate'
-
-" Updated Snakemake syntax highlighting copied from the official repository.
-" Contains keywords from Snakemake (version 5+) such as checkpoint, shadow.
-Plug 'raivivek/vim-snakemake'
-au FileType snakemake set shiftwidth=4 softtabstop=4 expandtab
-
-" A modern vim plugin for editing LaTeX files.
-Plug 'lervag/vimtex'
-
-" Adds new text objects. 
-" Note that subsequent plugins depend on kana/vim-textobj-user
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
-
-" Distraction-free writing in Vim.
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-
-" Peekaboo will show you the contents of the registers on the sidebar when you
-" hit " or @ in normal mode or <CTRL-R> in insert mode.
-Plug 'junegunn/vim-peekaboo'
-
-" Open URI with your favorite browser from your most favorite editor.
-Plug 'tyru/open-browser.vim'
-
-" end the section to add plugins to &runtimepath
-" Reload .vimrc and :PlugInstall to install plugins.
-call plug#end()
 
 "
 " Solarized config
