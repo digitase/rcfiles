@@ -3,6 +3,7 @@
 #
 
 # Use Vi, not Emacs, style editing
+# NOTE: analogous to set -o vi in .bashrc https://superuser.com/questions/1360220/is-it-possible-to-use-vim-key-bindings-in-iterm2
 set editing-mode vi
 
 # Allow hotkeys for reloading inputrc file

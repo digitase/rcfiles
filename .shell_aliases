@@ -7,7 +7,7 @@
 # fi
 
 # Appends to PATH
-# PATH="$HOME/bin:$PATH"
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
@@ -31,6 +31,9 @@ alias lll='ls -Faltr'
 
 # Set pager to less
 export PAGER="less"
+
+# Enable vi editing mode
+set -o vi
 
 # default editor settings
 export VISUAL=vim
