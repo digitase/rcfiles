@@ -6,6 +6,13 @@ Run `init.sh` to symlink files to their correct location.
 
 - `.shell_aliases`
 	- shared config for e.g. bash/zsh
+    - source from approriate shell rc:
+    ```
+    # Source shell aliases from rcfiles
+    if [ -f ~/.shell_aliases ]; then
+       . ~/.shell_aliases
+    fi
+    ```
 - `.gitconfig`
 	- [Git](https://git-scm.com/)
 - `.gitignore`
