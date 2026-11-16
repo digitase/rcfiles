@@ -13,7 +13,7 @@
 #
 
 # Useful appends to PATH
-# PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Set pager to less
 export PAGER="less"
