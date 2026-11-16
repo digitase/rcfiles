@@ -1,16 +1,25 @@
 #
-# (Ba)sh aliases
+# Shared shell rc
 #
-# Add this to the approriate shell rc to source
-# if [ -f ~/.shell_aliases ]; then
-#    . ~/.shell_aliases
+# Add this to the approriate shell rc and shell profile (to make sure login shells also pick up interactive settings):
+# # Source shared shell_rc
+# if [ -f ~/.shell_rc ]; then
+#    . ~/.shell_rc
 # fi
 
-# Appends to PATH
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# Enable vi editing mode
+set -o vi
 
-# enable color support of ls and also add handy aliases
-#if [ -x /usr/bin/dircolors ]; then
+# Enable auto color support using built-in default colour scheme
+if ls --color=auto >/dev/null 2>&1; then
+    alias ls='ls --color=auto'
+else
+    alias ls='ls -G'
+fi
+alias grep='grep --color=auto'
+
+# Enable color support using dircolors
+# if [ -x /usr/bin/dircolors ]; then
 #    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 #    alias ls='ls --color=auto'
 #    alias dir='dir --color=auto'
@@ -19,34 +28,25 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 #    alias grep='grep --color=auto'
 #    alias fgrep='fgrep --color=auto'
 #    alias egrep='egrep --color=auto'
-#fi
+# fi
 
-# some more ls aliases
+# Some more ls aliases
+# -F: classify entries
+# -a all
+# -l long format
+# -tr sort by time, reverse sort
 alias l='ls -Fa'
 alias ll='ls -Fal'
 alias lll='ls -Faltr'
 
 # For vimcom/vim-r-plugin
-#alias vim="vim --servername VIM"
-
-# Set pager to less
-export PAGER="less"
-
-# Enable vi editing mode
-set -o vi
-
-# default editor settings
-export VISUAL=vim
-export EDITOR="$VISUAL"
+# alias vim="vim --servername VIM"
 
 # Force tmux to assume the terminal supports 256 colours.
 alias tmux="tmux -2"
 
 # Default wide layout for bjobs
 # alias bjobs='bjobs -w'
-
-# Set directory to store tmux sockets
-export TMUX_TMPDIR="$HOME/tmp"
 
 # Gets fresh environment variables for tmux
 function tmux_refresh_env_vars {

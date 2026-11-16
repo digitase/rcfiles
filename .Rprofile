@@ -1,3 +1,7 @@
+#
+# R profile 
+#
+# Runs automatically every time you start an R session
 
 # vimcom configuration
 # if(interactive()){

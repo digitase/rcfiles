@@ -4,8 +4,10 @@ Configuration files for various Unix programs. Intended for MacBook setup.
 
 Run `init.sh` to symlink files to their correct location.
 
-- `.shell_aliases`
-	- shared config for e.g. bash/zsh
+- `.shell_profile`
+	- shared config for login shell .profiles
+- `.shell_rc`
+	- shared config for non-login interactive shell run commands
 - `.gitconfig`
 	- [Git](https://git-scm.com/)
 - `.gitignore`
