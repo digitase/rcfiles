@@ -26,4 +26,5 @@ create_link .tmux.conf ~/.tmux.conf
 create_link .inputrc ~/.inputrc
 create_link .gitconfig ~/.gitconfig
 create_link .Rprofile ~/.Rprofile
+create_link .lintr ~/.lintr
 

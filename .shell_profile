@@ -24,3 +24,14 @@ export EDITOR="$VISUAL"
 
 # Set directory to store tmux sockets
 export TMUX_TMPDIR="$HOME/tmp"
+
+#
+# zsh specific config
+#
+if [ -n "$ZSH_VERSION" ]; then
+
+    # Wait time (cs) for additional characters when you press a key that starts a multi-key sequence.
+    # e.g. Esc
+    export KEYTIMEOUT=10
+
+fi

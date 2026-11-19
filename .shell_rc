@@ -10,6 +10,53 @@
 # Enable vi editing mode
 set -o vi
 
+#
+# zsh specific config
+#
+if [ -n "$ZSH_VERSION" ]; then
+
+    # Activate search with Ctrl+R (and Ctrl+S for forward) in Insert & Normal modes
+    bindkey -M viins '^R' history-incremental-search-backward
+    bindkey -M viins '^S' history-incremental-search-forward
+    bindkey -M vicmd '^R' history-incremental-search-backward
+    bindkey -M vicmd '^S' history-incremental-search-forward
+
+    # Cursor shape switching
+    # Change cursor shape dynamically (Block in Normal mode, Beam in Insert mode)
+    function zle-keymap-select {
+        case $KEYMAP in
+            vicmd) echo -ne '\e[1 q';;
+            viins|main) echo -ne '\e[5 q';;
+        esac
+    }
+    zle -N zle-keymap-select
+    # Ensure beam cursor is set on every new prompt
+    zle-line-init() {
+        zle -K viins
+        echo -ne "\e[5 q"
+    }
+    zle -N zle-line-init
+
+fi
+
+#
+# Bash specific config
+#
+if [ -n "$BASH_VERSION" ]; then
+
+  # Ctrl+P for backward search, Ctrl+N for forward search
+  # bind -m vi-insert '"\C-p": reverse-search-history'
+  # bind -m vi-insert '"\C-n": forward-search-history'
+  # bind -m vi-command '"\C-p": reverse-search-history'
+  # bind -m vi-command '"\C-n": forward-search-history'
+
+  # Cursor shape switching (Bash 4.3+)
+  bind 'set show-mode-in-prompt on'
+  bind 'set vi-ins-mode-string \1\e[5 q\2'
+  bind 'set vi-cmd-mode-string \1\e[1 q\2'
+
+fi
+
 # Enable auto color support using built-in default colour scheme
 if ls --color=auto >/dev/null 2>&1; then
     alias ls='ls --color=auto'

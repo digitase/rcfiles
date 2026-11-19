@@ -227,6 +227,18 @@ set nowrap
 " showmatch: Show the matching bracket for the last ')'?
 set showmatch
 
+" Switch cursor shape between Insert (beam) and Normal (block) mode in Vim
+let &t_SI = "\e[5 q"  " Insert mode: blinking beam
+let &t_SR = "\e[3 q"  " Replace mode: blinking underline
+let &t_EI = "\e[1 q"  " Normal/Other modes: blinking block
+"
+" Ensure Vim starts with a block cursor immediately on launch
+" Useful if shell cursor shape is set and inherited
+augroup ResetCursorOnStart
+    autocmd!
+    autocmd VimEnter * silent !echo -ne "\e[1 q"
+augroup END
+
 "
 " Editing
 "

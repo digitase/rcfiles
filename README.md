@@ -30,3 +30,5 @@ Run `init.sh` to symlink files to their correct location.
 	- MacOS key remaps
 - `mpv.conf`
 	- [mpv](https://mpv.io/) media player
+- `.lintr`
+	- [lintr](https://lintr.r-lib.org/) linter for R
