@@ -13,7 +13,16 @@
 #
 
 # Useful appends to PATH
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# First check they are not already present
+case ":$PATH:" in
+    *":$HOME/bin:"*) ;;
+    *) export PATH="$HOME/bin:$PATH" ;;
+esac
+#
+case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
 
 # Set pager to less
 export PAGER="less"
