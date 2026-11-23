@@ -104,7 +104,7 @@ function tmux_refresh_env_vars {
 
 # List active tmux sockets
 function tmux_get_active_sockets {
-    for tmux_socket_path in $(lsof -U | grep '^tmux' | awk '{print $9}'); do
+    for tmux_socket_path in $(lsof -Uw | grep '^tmux' | awk '{print $9}'); do
         echo "$tmux_socket_path"
         printf '\t%s\n' "$(tmux -S $tmux_socket_path ls)"
     done
