@@ -442,6 +442,9 @@ let g:NERDTrimTrailingWhitespace = 1
 let NERDTreeDirArrowExpandable = '+'
 let NERDTreeDirArrowCollapsible = '~'
 
+" Show hidden files
+let NERDTreeShowHidden=1
+
 "
 " vim-slime config
 "

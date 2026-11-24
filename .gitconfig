@@ -14,3 +14,10 @@
 	gpgsign = true # Sign commits
 [tag]
 	gpgsign = true # Sign tags
+[fetch]
+	prune = true # Auto prune any remote branches that have been deleted (e.g. deleted branches after a pull request merge)
+[push]
+    # Allow git push to auto setup the upstream for the first push of a new branch
+    # - pushes the branch to a branch of the same name on origin, creating it if needed
+    # - sets that as the upstream
+    autoSetupRemote = true
